@@ -1,0 +1,171 @@
+ [{
+			"logo": "https://storage.googleapis.com/madzlocaltv/images/Tamilnews/fm/radio_mirchi.jpg",
+			"streamUrl": "http://stream2.oppocast.com/mi_stream",
+			"name": "Radio Mirchi"
+		},
+		
+		{
+			"logo": "https://storage.googleapis.com/madzlocaltv/images/Tamilnews/fm/hello_fm.jpg",
+			"streamUrl": "http://stream2.oppocast.com/he_stream",
+			"name": "Hello FM"
+		},
+		{
+			"logo": "https://storage.googleapis.com/madzlocaltv/images/Tamilnews/fm/radio_city.jpg",
+			"streamUrl": "http://stream2.oppocast.com/ci_stream",
+			"name": "Radio City"
+		},
+		{
+			"logo": "https://storage.googleapis.com/madzlocaltv/images/Tamilnews/fm/big_fm.jpg",
+			"streamUrl": "http://stream2.oppocast.com/bi_stream",
+			"name": "BIG FM"
+		},
+		{
+			"logo": "https://storage.googleapis.com/madzjson/TamilNews/images/livetv/polimer_tv.png",
+			"streamUrl": "https://yuppmedtaorire.akamaized.net/v1/master/a0d007312bfd99c47f76b77ae26b1ccdaae76cb1/polimernews_nim_https/110322/polimernews/playlist.m3u8",
+			"name": "Polimer News"
+		},
+		{
+			"logo": "https://storage.googleapis.com/madzjson/TamilNews/images/livetv/puthiya_thalaimurai_tv.png",
+			"streamUrl": "https://yuppmedtaorire.akamaized.net/v1/manifest/a0d007312bfd99c47f76b77ae26b1ccdaae76cb1/puthiya_nim_https/556423dc-14c7-4116-8437-7c656b2504ad/2.m3u8",
+			"name": "Puthiya Thalaimurai"
+		},
+		{
+			"logo": "https://storage.googleapis.com/madzjson/TamilNews/images/livetv/news7_tamil_tv.png",
+			"streamUrl": "https://yuppmedtaorire.akamaized.net/v1/master/a0d007312bfd99c47f76b77ae26b1ccdaae76cb1/news7_nim_https/240122/news7/playlist.m3u8",
+			"name": "News 7"
+		},
+		{
+			"name": "Vadivelu Comedy",
+			"streamUrl": "http://stream.zeno.fm/02n962ezyp8uv",
+			"logo": "https://storage.googleapis.com/tamilnews/FM/images/Vadivelu-Comedy-Radio.png"
+		},
+		{
+			"name": "Tamil Comedy ",
+			"streamUrl": "http://live.tamilkuyilradio.com:8035/tamilcomedyradio",
+			"logo": "https://storage.googleapis.com/tamilnews/FM/images/Tamil-Comedy-Radio.png"
+		},
+		{
+			"name": "Pasanga FM",
+			"streamUrl": "http://s7.voscast.com:10864/;",
+			"logo": "https://storage.googleapis.com/tamilnews/FM/images/Pasanga-FM.png"
+		},
+		{
+			"logo": "https://storage.googleapis.com/madzlocaltv/images/Tamilnews/fm/ilayaraja.png",
+			"streamUrl": "http://live.tamilkuyilradio.com:8026/rajaradio",
+			"name": "Raja HD"
+		},
+		{
+			"logo": "https://storage.googleapis.com/madzlocaltv/images/Tamilnews/fm/ilayaraja.png",
+			"streamUrl": "http://stream.zenolive.com/pwm9y3eud5zuv",
+			"name": "Ilayaraja Radio"
+		},
+		{
+			"logo": "https://storage.googleapis.com/madzlocaltv/images/Tamilnews/fm/ilayaraja.png",
+			"streamUrl": "http://stream.zeno.fm/zngnvwy9bm8uv",
+			"name": "Ilayaraja Hits"
+		},
+		{
+			"logo": "https://storage.googleapis.com/madzlocaltv/images/Tamilnews/fm/ilayaraja.png",
+			"streamUrl": "http://stream.zenolive.com/476bw00re5zuv",
+			"name": "Ilayaraja Love"
+		},
+		
+		{
+			"name": "A.R.Rahman Radio",
+			"streamUrl": "http://stream.zenolive.com/p7b0e3ms97zuv",
+			"logo": "https://storage.googleapis.com/madzlocaltv/images/Tamilnews/fm/rahman.jpg"
+		},
+		
+	
+		{
+			"logo": "https://storage.googleapis.com/madzlocaltv/images/Tamilnews/fm/don-station.png",
+			"streamUrl": "http://node-34.zeno.fm/v93sxrbtzwzuv?rj-ttl=5&rj-tok=AAABceARjSkAmBNqDs6uOngQ7g",
+			"name": "Don Station"
+		},
+		{
+			"name": "Deva Hits",
+			"streamUrl": "https://stream.zeno.fm/6cxuhfmcbkhvv", 
+			"logo": "https://storage.googleapis.com/madzlocaltv/images/Tamilnews/fm/deva.jpg"
+		},
+		{
+			"name": "Rajinikanth Hits",
+			"streamUrl": "https://stream.zeno.fm/vcn3hvqpad0uv",
+			"logo": "https://storage.googleapis.com/madzlocaltv/images/Tamilnews/fm/rajinikanth.png"
+		},
+		{
+			"name": "Vijay Radio",
+			"streamUrl": "https://stream.zeno.fm/2pn99a71w0hvv",
+			"logo": "https://storage.googleapis.com/madzlocaltv/images/Tamilnews/fm/vijay.jpg"
+		},
+		{
+			"name": "Ajith Hits",
+			"streamUrl": "https://stream.zeno.fm/qfkksd31w0hvv",
+			"logo": "https://storage.googleapis.com/madzlocaltv/images/Tamilnews/fm/ajith.jpg"
+		},
+		{
+			"name": "Surya Hits",
+			"streamUrl": "https://stream.zeno.fm/rzf5mbq3b48uv",
+			"logo": "https://storage.googleapis.com/tamilnews/FM/images/surya.jpg"
+		},
+		{
+			"name": "Danush Hits",
+			"streamUrl": "https://stream.zeno.fm/aqp97f3z238uv",
+			"logo": "https://storage.googleapis.com/tamilnews/FM/images/danush.jpg"
+		},
+		{
+			"name": "SPB HD",
+			"streamUrl": "https://stream.zeno.fm/cgyvbgd2w0hvv", 
+			"logo": "https://storage.googleapis.com/madzlocaltv/images/Tamilnews/fm/spb.jpg"
+		},
+		{
+			"name": "K. J. Yesudas",
+			"streamUrl": "https://stream.zeno.fm/avt4e9yaa48uv",
+			"logo": "https://storage.googleapis.com/madzlocaltv/images/Tamilnews/fm/yesudas.jpg"
+		},
+		{
+			"name": "S Janaki",
+			"streamUrl": "https://stream.zeno.fm/ewdn3pfcbkhvv",
+			"logo": "https://storage.googleapis.com/tamilnews/FM/images/jankaki.jpg"
+		},
+		{
+			"name": "KS Chitra",
+			"streamUrl": "https://stream.zeno.fm/h9vqwpmcbkhvv",
+			"logo": "https://storage.googleapis.com/tamilnews/FM/images/chitra.jpg"
+		},
+		{
+			"name": "Mohan Hits",
+			"streamUrl": "https://stream.zeno.fm/y7mgyn41w0hvv",
+			"logo": "https://storage.googleapis.com/madzlocaltv/images/Tamilnews/fm/mohan.jpg"
+		},
+		{
+			"name": "Anirudh Radio",
+			"streamUrl": "https://stream.zeno.fm/qdvuf5e4138uv",
+			"logo": "https://storage.googleapis.com/madzlocaltv/images/Tamilnews/fm/anirudh.jpg"
+		},
+		{
+			"name": "Yuvan Shankar Raja",
+			"streamUrl": "https://stream.zeno.fm/f939szg6a48uv",
+			"logo": "https://storage.googleapis.com/madzlocaltv/images/Tamilnews/fm/yuvanshankarraja.jpg"
+		},
+		{
+			"name": "D Imman Hits",
+			"streamUrl": "https://stream.zeno.fm/1zsd11zaa48uv",
+			"logo": "https://storage.googleapis.com/tamilnews/FM/images/imman.jpg"
+		},
+		{
+			"name": "Sad Songs",
+			"streamUrl": "https://stream.zeno.fm/t6v2w97feq8uv",
+			"logo": "https://storage.googleapis.com/tamilnews/FM/images/sadsongs.jpg"
+		},
+		{
+			"name": "MGR Hits",
+			"streamUrl": "https://stream.zeno.fm/0muspvd4138uv",
+			"logo": "https://storage.googleapis.com/tamilnews/FM/images/mgr.jpg"
+		},
+		{
+			"name": "Anbu Kaanoli",
+			"streamUrl": "http://stream.zeno.fm/5csru2np4bruv",
+			"logo": "https://storage.googleapis.com/tamilnews/FM/images/anbu.png"
+		}
+		
+	]

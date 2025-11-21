@@ -1,0 +1,22 @@
+{
+  "app_config": {
+    "global_notice": {
+      "dialogText": "This version is outdated. Download the new app.",
+      "playStoreUrl": "https://play.google.com/store/apps/details?id=com.quickleaf.tamilnews",
+      "showDialog": false,
+
+        "forceUpdateEnabled": false,   
+        "latestVersion": "1.1",            
+        "forceUpdateText": "Please update to use the app"
+    },
+
+    "main": {
+      "contactContent": "contact us quickleafapps@gmail.com",
+      "disclaimerContent": "Dear Respected Copyright Owner, We deeply respect the intellectual property rights of all creators and copyright holders. The content provided in this application is intended for informational and educational purposes only, and is not intended to infringe upon any copyright in any manner. Our sole intent is to educate, inform, inspire, and celebrate the brilliance of your work — never to violate your rights. We believe that great ideas and creations deserve appreciation and recognition, and our goal is to share them in a manner that honors your contribution. Your creativity has inspired and brought joy to many, and we are truly grateful for your work. We would be honored to continue showcasing it in a way that reflects respect and admiration for your efforts. If you are the rightful owner of any content used in this material and wish for it to be removed or properly credited, please contact us. We will review and act upon your request immediately and respectfully. We highly value and respect all creators and are fully committed to ensuring that your rights are protected. Please contact us at quickleafapps@gmail.com — any content identified will be promptly reviewed and permanently removed if requested.",
+      "privacyLink": "https://sites.google.com/view/privacypolicy-tamilnewsapp/home",
+      "rateLink": "https://play.google.com/store/apps/details?id=com.quickleaf.tamilnews",
+      "shareLink": "https://play.google.com/store/apps/details?id=com.quickleaf.tamilnews",
+      "showHomeScreen": true
+    }
+  }
+}

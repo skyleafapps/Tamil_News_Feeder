@@ -1,0 +1,167 @@
+[
+   {
+	  "title": "Daily Thanthi",
+	  "url": "https://www.dailythanthi.com", 	
+      "image": "https://storage.googleapis.com/tamilnews/newspaper/tamilnewspaper/images/dhina_thanthi.png"
+            
+    },
+    {
+      "title": "Vikatan",
+	  "url": "https://www.vikatan.com/news/", 	
+      "image": "https://storage.googleapis.com/tamilnews/newspaper/tamilnewspaper/images/vikatan.png",
+	  "browser": "chrome"
+    },
+    {
+      "title": "Dinamalar",
+	  "url": "http://www.dinamalar.com", 	
+      "image": "https://storage.googleapis.com/tamilnews/newspaper/tamilnewspaper/images/dhinamalar.png"
+    },
+	{
+	  "title": "Dinakaran",
+	  "url": "http://www.dinakaran.com", 	
+      "image": "https://storage.googleapis.com/tamilnews/newspaper/tamilnewspaper/images/dhinakaran.png",
+	  "browser": "chrome"
+            
+    },
+	{
+	  "title": "Maalaimalar",
+	  "url": "https://www.maalaimalar.com", 	
+      "image": "https://storage.googleapis.com/tamilnews/newspaper/tamilnewspaper/images/malaimalar.png"
+            
+    },
+    {
+      "title": "The Hindu",
+	  "url": "https://tamil.thehindu.com", 	
+      "image": "https://storage.googleapis.com/tamilnews/newspaper/tamilnewspaper/images/tamil_hindu.png"
+    },
+    {
+	  "title": "Cinema Vikatan",
+	  "url": "https://cinema.vikatan.com", 	
+      "image": "https://storage.googleapis.com/tamilnews/newspaper/tamilnewspaper/images/cinema_vikatan.png"
+            
+    },
+     {
+      "title": "Puthiya Thalaimurai",
+	  "url": "http://www.puthiyathalaimurai.com/", 	
+      "image": "https://storage.googleapis.com/tamilnews/newspaper/tamilnewspaper/images/puthiya_thalaimurai_tv.png"
+    },
+
+      {
+         "title":"Cricinfo",
+         "url":"https://www.espncricinfo.com/",
+         "image": "https://storage.googleapis.com/tamilnews/newspaper/tamilnewspaper/images/espncricinfo.png"
+      },
+      {
+         "title":"Cricbuzz",
+         "url":"https://www.cricbuzz.com/",
+        "image": "https://storage.googleapis.com/tamilnews/newspaper/tamilnewspaper/images/cricbuzz.png"
+      },
+
+    {
+      "title": "Tamil Murasu",
+	  "url": "http://tm.dinakaran.com", 	
+      "image": "https://storage.googleapis.com/tamilnews/newspaper/tamilnewspaper/images/tamil_murasu.png"
+    },
+	
+    {
+      "title": "Samayam",
+	  "url": "https://tamil.samayam.com/tamil-cinema/articlelist/48237837.cms", 	
+      "image": "https://storage.googleapis.com/tamilnews/newspaper/tamilnewspaper/images/smayam.png"
+    },
+   
+	{
+	  "title": "Polimer",
+	  "url": "https://polimernews.com/", 	
+      "image": "https://storage.googleapis.com/tamilnews/newspaper/tamilnewspaper/images/polimer_tv.png"
+            
+    },
+  
+    {
+      "title": "News18 TamilNadu",
+	  "url": "https://tamil.news18.com/", 	
+      "image": "https://storage.googleapis.com/tamilnews/newspaper/tamilnewspaper/images/news18_tamil_tv.png"
+    },
+	
+    {
+      "title": "One India Tamil",
+	  "url": "https://tamil.oneindia.com/", 	
+      "image": "https://storage.googleapis.com/tamilnews/newspaper/tamilnewspaper/images/one_india_tamil.png"
+    },
+    {
+      "title": "Nakkheeran",
+	  "url": "https://www.nakkheeran.in/", 	
+      "image": "https://storage.googleapis.com/tamilnews/newspaper/tamilnewspaper/images/nakkheeran.png"
+    },
+	{
+	  "title": "Malaimurasu",
+	  "url": "http://epaper.malaimurasu.co/", 	
+      "image": "https://storage.googleapis.com/tamilnews/newspaper/tamilnewspaper/images/maalaimurasu_tv.png"
+            
+    },
+    {
+      "title": "Cineulagam",
+	  "url": "https://ummat.net/", 	
+      "image": "https://storage.googleapis.com/tamilnews/newspaper/tamilnewspaper/images/cine_ulagam.png"
+    },
+	{
+	  "title": "Dinamani",
+	  "url": "hhttp://www.dinamani.com/", 	
+      "image": "https://storage.googleapis.com/tamilnews/newspaper/tamilnewspaper/images/dhina_mani.png"
+            
+    },
+    {
+      "title": "Murasoli",
+	  "url": "http://www.murasoli.in/", 	
+      "image": "https://storage.googleapis.com/tamilnews/newspaper/tamilnewspaper/images/murasoli.png"
+    },
+    
+
+    {
+      "title": "Theekkathir",
+	  "url": "http://epaper.theekkathir.org/", 	
+      "image": "https://storage.googleapis.com/tamilnews/newspaper/tamilnewspaper/images/theekkathir.png"
+    },
+    {
+      "title": "Dinasudar",
+	  "url": "http://allindiannewspapers.com/dinasudar/", 	
+      "image": "https://storage.googleapis.com/tamilnews/newspaper/tamilnewspaper/images/dhina_sudar.png"
+    },
+	{
+	  "title": "Thinakkural",
+	  "url": "http://thinakkural.lk/", 	
+      "image": "https://storage.googleapis.com/tamilnews/newspaper/tamilnewspaper/images/thinakkural.png"
+            
+    },
+    {
+      "title": "Thinaboomi",
+	  "url": "http://www.thinaboomi.com/", 	
+      "image": "https://storage.googleapis.com/tamilnews/newspaper/tamilnewspaper/images/thina_boomi.png"
+    },
+	{
+	  "title": "Virakesari",
+	  "url": "http://www.virakesari.lk/", 	
+      "image": "https://storage.googleapis.com/tamilnews/newspaper/tamilnewspaper/images/veerakkessari.png"
+            
+    },
+    {
+      "title": "Uthayan",
+	  "url": "http://newuthayan.com/", 	
+      "image": "https://storage.googleapis.com/tamilnews/newspaper/tamilnewspaper/images/uthayan.png"
+    },
+    {
+      "title": "Tamil Mithran",
+	  "url": "http://www.tamilmithran.com/", 	
+      "image": "https://storage.googleapis.com/tamilnews/newspaper/tamilnewspaper/images/tamil_mithran.png"
+    },
+	{
+	  "title": "Times Tamil",
+	  "url": "https://www.timestamilnews.com/", 	
+      "image": "https://storage.googleapis.com/tamilnews/newspaper/tamilnewspaper/images/times_tamil.png"
+            
+    },
+    {
+      "title": "Viral Ulagam",
+	  "url": "https://viralulagam.in/", 	
+      "image": "https://storage.googleapis.com/tamilnews/newspaper/tamilnewspaper/images/viral_logo.png"
+    }
+]
