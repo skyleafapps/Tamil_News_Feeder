@@ -5,7 +5,7 @@ import crypto from 'crypto';
 import fetch from 'node-fetch';
 import * as cheerio from 'cheerio';
 
-// ---- Firebase init (load from .env) ----
+// ---- Firebase init ----
 const serviceAccount = JSON.parse(process.env.FIREBASE_KEY);
 serviceAccount.private_key = serviceAccount.private_key.replace(/\\n/g, '\n');
 
@@ -21,15 +21,24 @@ const CHANNEL_IDS = (process.env.CHANNEL_IDS || '')
   .map((s) => s.trim())
   .filter(Boolean);
 
-const TOPIC = 'breaking_top_video'; // FCM topic name
+const TOPIC = 'breaking_top_video';
 
-// Map feed URLs → sources
+// ---- RSS Feeds ----
 const feedSources = {
- 'https://www.puthiyathalaimurai.com/feed': 'Puthiya Thalaimurai',
-  'https://beta.dinamani.com/api/v1/collections/latest-news.rss': 'Dinamani',
+  'https://www.puthiyathalaimurai.com/feed': 'Puthiya Thalaimurai',
   'https://zeenews.india.com/tamil/tamil-nadu.xml': 'Zee Tamil',
-
+  'https://www.vikatan.com/api/v1/collections/kollywood-entertainment.rss?&time-period=last-24-hours':
+    'Vikatan Cinema',
+  'https://www.vikatan.com/api/v1/collections/automobile.rss?&time-period=last-24-hours':
+    'Vikatan Automobile',
+  'https://tamil.news18.com/commonfeeds/v1/tam/rss/lifestyle/food.xml':
+    'News 18 Life style',
+  'https://tamil.news18.com/commonfeeds/v1/tam/rss/sports/cricket.xml':
+    'News 18 Cricket',
+  'https://tamil.news18.com/commonfeeds/v1/tam/rss/business/agriculture.xml':
+    'News 18 Agriculture',
 };
+
 const feedUrls = Object.keys(feedSources);
 
 // ---- Helpers ----
@@ -45,21 +54,29 @@ async function fetchWithTimeout(url, options = {}, timeout = 10000) {
 
 async function getArticleImage(url) {
   try {
-    console.log(`🌐 Fetching image for article: ${url}`);
-    const res = await fetchWithTimeout(url, {
-      headers: { 'User-Agent': 'Mozilla/5.0' },
-    });
+    const res = await fetchWithTimeout(
+      url,
+      { headers: { 'User-Agent': 'Mozilla/5.0' } },
+      8000
+    );
     const html = await res.text();
     const $ = cheerio.load(html);
-    return $('meta[property="og:image"]').attr('content') || '';
-  } catch (err) {
-    console.error(`⚠️ Failed to fetch article image: ${url}`, err.message || err);
+    return (
+      $('meta[property="og:image"]').attr('content') ||
+      $('meta[name="twitter:image"]').attr('content') ||
+      ''
+    );
+  } catch {
     return '';
   }
 }
 
-// ---- RSS fetcher ----
+// ---- RSS Fetcher (debug kept as requested) ----
 async function fetchArticlesFromFeeds(feedUrls) {
+  console.log('------------------------------------------------------------');
+  console.log('📡 Fetching RSS Feeds (taking top 30 per feed URL)...');
+  console.log('------------------------------------------------------------');
+
   const parser = new Parser({
     customFields: { item: ['enclosure', 'media:content', 'content:encoded'] },
     requestOptions: { headers: { 'User-Agent': 'Mozilla/5.0' } },
@@ -67,108 +84,137 @@ async function fetchArticlesFromFeeds(feedUrls) {
 
   const feeds = await Promise.all(
     feedUrls.map(async (url) => {
-      console.log(`🔎 Fetching RSS feed: ${url}`);
       try {
         const f = await parser.parseURL(url);
-        console.log(`✅ Success: ${url} -> ${f.items?.length || 0} items`);
-        return { f, url };
+        console.log(
+          `✔ RSS Loaded: ${feedSources[url]} (${url}) — ${
+            f.items?.length || 0
+          } items`
+        );
+        return { f, url, ok: true };
       } catch (err) {
-        console.error(`❌ Failed to fetch ${url}:`, err.message || err);
-        return { f: { items: [] }, url };
+        console.log(
+          `❌ RSS Failed: ${feedSources[url]} (${url}) — ${
+            err.message || 'fetch error'
+          }`
+        );
+        return { f: { items: [] }, url, ok: false };
       }
     })
   );
 
-  const items = feeds.flatMap(({ f, url }) =>
-    (f.items || []).map((item) => ({ ...item, _feedUrl: url }))
-  );
+  const perFeedUsedCounts = {};
+  const items = feeds.flatMap(({ f, url }) => {
+    const all = (f.items || []).slice();
+    all.sort(
+      (a, b) =>
+        new Date(b.pubDate || b.isoDate || Date.now()) -
+        new Date(a.pubDate || a.isoDate || Date.now())
+    );
+    const used = all.slice(0, 30);
+    perFeedUsedCounts[url] = {
+      original: (f.items || []).length,
+      used: used.length,
+      sourceName: feedSources[url] || 'Unknown',
+    };
+    return used.map((item) => ({ ...item, _feedUrl: url }));
+  });
 
   const mapped = await Promise.all(
     items.map(async (item) => {
       try {
-        const pubDate = item.pubDate ? new Date(item.pubDate) : new Date();
-        const enclosureUrl = item.enclosure?.url || '';
-        const mediaContent = item['media:content']?.url || '';
-        let imageUrl = enclosureUrl || mediaContent;
-        if (!imageUrl && item.link) {
-          imageUrl = await getArticleImage(item.link);
-        }
+        const pubDate = item.pubDate
+          ? new Date(item.pubDate)
+          : item.isoDate
+          ? new Date(item.isoDate)
+          : new Date();
+
+        let imageUrl =
+          item.enclosure?.url ||
+          item['media:content']?.url ||
+          (item.link ? await getArticleImage(item.link) : '');
 
         return {
           title: item.title || '',
-          description: item.contentSnippet || '',
-          url: item.link || '',
+          description: item.contentSnippet || item.content || '',
+          url: item.link || item.id || '',
           image: imageUrl || '',
           type: 'article',
           source: feedSources[item._feedUrl] || 'Unknown',
           timestamp: pubDate,
         };
-      } catch (err) {
-        console.error(`⚠️ Error processing article from ${item._feedUrl}:`, err.message || err);
+      } catch {
         return null;
       }
     })
   );
 
   const validItems = mapped.filter(Boolean);
-  console.log(`📊 Total articles processed: ${validItems.length}`);
 
-  // Keep only latest 20
-  return validItems
-    .sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp))
-    .slice(0, 20);
+  console.log('\n📝 ITEM COUNT PER FEED URL (original -> used):');
+  console.log('------------------------------------------------------------');
+  Object.entries(perFeedUsedCounts).forEach(([url, info]) => {
+    console.log(
+      `${(info.sourceName + ' ').padEnd(20)} ${url} => ${
+        info.original
+      } -> ${info.used}`
+    );
+  });
+  console.log('------------------------------------------------------------');
+  console.log(
+    `📦 Total RSS Articles Used (sum of per-feed top30): ${validItems.length}\n`
+  );
+
+  return validItems;
 }
 
-// ---- YouTube fetcher ----
+// --------------------------------------------------
+// 🔥 CLEAN YOUTUBE FETCH (minimal debug only)
+// --------------------------------------------------
 async function getLatestVideos(channelId) {
+  console.log(`📺 Fetching YouTube for channel: ${channelId}`);
+
   const activitiesUrl = `https://www.googleapis.com/youtube/v3/activities?part=snippet,contentDetails&channelId=${channelId}&maxResults=3&key=${YT_API_KEY}`;
-  console.log(`🔎 Fetching latest activities from: ${activitiesUrl}`);
 
   try {
-    const res = await fetchWithTimeout(activitiesUrl);
+    const res = await fetchWithTimeout(activitiesUrl, {}, 8000);
     const data = await res.json();
 
-    if (!data.items || !data.items.length) {
-      console.log(`⚠️ No activity found for channel ${channelId}`);
-      return [];
-    }
-
-    const videoIds = data.items
+    const videoIds = (data.items || [])
       .map((a) => a.contentDetails?.upload?.videoId)
       .filter(Boolean);
 
-    if (!videoIds.length) {
-      console.log(`⚠️ No upload videos found in activities for ${channelId}`);
-      return [];
-    }
+    console.log(`➡️ Found ${videoIds.length} video IDs`);
+
+    if (!videoIds.length) return [];
 
     const videosUrl = `https://www.googleapis.com/youtube/v3/videos?key=${YT_API_KEY}&id=${videoIds.join(
       ','
     )}&part=snippet,statistics`;
-    const videosRes = await fetchWithTimeout(videosUrl);
+
+    const videosRes = await fetchWithTimeout(videosUrl, {}, 8000);
     const videosData = await videosRes.json();
 
-    if (!videosData.items || !videosData.items.length) {
-      console.log(`⚠️ No details found for videos: ${videoIds}`);
-      return [];
-    }
-
-    return videosData.items.map((v) => ({
+    const result = (videosData.items || []).map((v) => ({
       videoId: v.id,
       title: v.snippet.title,
       description: v.snippet.description,
       image:
         v.snippet.thumbnails?.high?.url ||
         v.snippet.thumbnails?.medium?.url ||
-        v.snippet.thumbnails?.default?.url,
+        v.snippet.thumbnails?.default?.url ||
+        '',
       url: `https://www.youtube.com/watch?v=${v.id}`,
       type: 'video',
       source: v.snippet.channelTitle || 'YouTube',
       timestamp: new Date(v.snippet.publishedAt),
       views: parseInt(v.statistics?.viewCount || '0', 10),
     }));
+
+    console.log(`✔️ Channel videos parsed: ${result.length}`);
+    return result;
   } catch (err) {
-    console.error(`❌ Error fetching videos for channel ${channelId}:`, err.message || err);
+    console.log(`❌ YouTube error: ${err.message}`);
     return [];
   }
 }
@@ -179,11 +225,8 @@ async function fetchVideosForChannels(channelIds) {
     const latest = await getLatestVideos(ch);
     videos = videos.concat(latest);
   }
+  console.log(`🎥 TOTAL Videos from ALL channels: ${videos.length}\n`);
 
-  console.log('🎥 Videos fetched:');
-  videos.forEach((v) => console.log(`- "${v.title}" [${v.videoId}] Views: ${v.views}`));
-
-  // Sort and keep latest 20
   return videos
     .sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp))
     .slice(0, 20);
@@ -191,16 +234,23 @@ async function fetchVideosForChannels(channelIds) {
 
 // ---- Notification sender ----
 async function sendTopVideoIfNeeded(videos) {
-  if (!videos || videos.length === 0) return;
+  console.log('\n🔔 Checking notification logic...');
+  console.log(`🎥 Videos available: ${videos.length}`);
 
-  const top = videos.sort((a, b) => (b.views || 0) - (a.views || 0))[0];
-  if (!top) return;
+  if (!videos.length) {
+    console.log('❌ No videos → Notification skipped');
+    return;
+  }
+
+  const top = videos.sort((a, b) => b.views - a.views)[0];
+  console.log(`🔥 Selected top video: ${top.videoId} (${top.views} views)`);
 
   const lastRef = db.collection('notifications').doc('last_notified');
   const lastDoc = await lastRef.get();
-  const lastVideoId = lastDoc.exists ? lastDoc.data()?.videoId : null;
-  if (lastVideoId && lastVideoId === top.videoId) {
-    console.log(`⚠️ Already notified for ${top.videoId}, skipping`);
+  const lastVideoId = lastDoc.exists ? lastDoc.data().videoId : null;
+
+  if (lastVideoId === top.videoId) {
+    console.log('⚠️ Already notified for this video → skipping');
     return;
   }
 
@@ -208,73 +258,99 @@ async function sendTopVideoIfNeeded(videos) {
     topic: TOPIC,
     data: {
       type: 'breaking',
-      videoId: top.videoId || '',
-      title: top.title || '',
-      image: top.image || '',
-      url: top.url || '',
-      source: top.source || '',
+      videoId: top.videoId,
+      title: top.title,
+      image: top.image,
+      url: top.url,
+      source: top.source,
       click_action: 'FLUTTER_NOTIFICATION_CLICK',
     },
     notification: {
-      title: top.title || 'Breaking News',
-      body: top.source ? `From ${top.source}` : 'Tap to watch',
-      image: top.image || '',
+      title: top.title,
+      body: `From ${top.source}`,
+      image: top.image,
     },
-    android: { priority: 'high', notification: { sound: 'default', channelId: 'breaking_channel' } },
-    apns: { payload: { aps: { sound: 'default', category: 'TOP_VIDEO' } } },
   };
 
-  console.log('🚀 Sending FCM message:');
-  console.log(JSON.stringify(message, null, 2));
-
   await admin.messaging().send(message);
-  console.log(`📢 Sent notification for top video: ${top.title}`);
+  console.log('📤 Notification SENT');
 
   await lastRef.set({
     videoId: top.videoId,
     title: top.title,
     notifiedAt: admin.firestore.FieldValue.serverTimestamp(),
   });
+
+  console.log('✔️ Notification record updated\n');
 }
 
 // ---- Main Update ----
 async function updateBreakingFeed() {
   console.log('Fetching articles...');
-  const articles = await fetchArticlesFromFeeds(feedUrls);
-  console.log(`📰 Articles fetched: ${articles.length}`);
+  const newArticles = await fetchArticlesFromFeeds(feedUrls);
 
   console.log('Fetching videos...');
-  const videos = await fetchVideosForChannels(CHANNEL_IDS);
-  console.log(`🎬 Videos fetched total: ${videos.length}`);
+  const newVideos = await fetchVideosForChannels(CHANNEL_IDS);
 
-  // Merge and sort
-  const combined = [...articles, ...videos]
-    .sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp))
-    .slice(0, 40); // keep total max 40 (20 each type combined)
+  console.log('------------------------------------------------------------');
+  console.log(`🆕 Articles: ${newArticles.length}`);
+  console.log(`🆕 Videos:   ${newVideos.length}`);
+  console.log('------------------------------------------------------------');
 
-  // 🔹 Transform to simple array (no hash IDs)
-  const items = combined.map((item) => {
-    const base = {
-      title: item.title,
-      description: item.description || '',
-      url: item.url,
-      image: item.image,
-      type: item.type,
-      source: item.source || 'Unknown',
-      timestamp: item.timestamp instanceof Date ? item.timestamp : new Date(item.timestamp),
-    };
-    if (item.type === 'video') {
-      base.videoId = item.videoId;
-      base.views = item.views || 0;
-    }
-    return base;
+  let newItems = [...newArticles, ...newVideos];
+
+  newItems = newItems.map((item) => ({
+    ...item,
+    timestamp:
+      item.timestamp instanceof Date ? item.timestamp : new Date(item.timestamp),
+  }));
+
+  newItems.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+
+  const oldDoc = await db.collection('breaking_news').doc('list').get();
+  let oldItems = [];
+  if (oldDoc.exists) {
+    oldItems = (oldDoc.data().items || []).map((item) => ({
+      ...item,
+      timestamp:
+        item.timestamp instanceof Date
+          ? item.timestamp
+          : item.timestamp?.toDate
+          ? item.timestamp.toDate()
+          : new Date(item.timestamp),
+    }));
+  }
+
+  console.log(`📚 Old items: ${oldItems.length}`);
+
+  let combined = [...newItems, ...oldItems];
+  console.log(`🔄 After merge: ${combined.length}`);
+
+  const seen = new Set();
+  combined = combined.filter((item) => {
+    const key = item.url || item.videoId;
+    if (!key || seen.has(key)) return false;
+    seen.add(key);
+    return true;
   });
 
-  // 🔹 Store in single Firestore doc: breaking_news/list
-  await db.collection('breaking_news').doc('list').set({ items });
+  console.log(`♻️ After dedupe: ${combined.length}`);
 
-  console.log(`✅ Uploaded ${items.length} items to breaking_news/list`);
-  await sendTopVideoIfNeeded(videos);
+  combined.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+  combined = combined.slice(0, 200);
+
+  console.log(`📦 Final stored count: ${combined.length}`);
+
+  await db.collection('breaking_news').doc('list').set({ items: combined });
+
+  console.log('✅ Firestore Updated');
+
+  await sendTopVideoIfNeeded(newVideos);
 }
 
-updateBreakingFeed().then(() => process.exit());
+updateBreakingFeed()
+  .then(() => process.exit())
+  .catch((err) => {
+    console.error('Fatal error:', err);
+    process.exit(1);
+  });

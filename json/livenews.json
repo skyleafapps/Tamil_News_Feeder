@@ -1,15 +1,18 @@
 [
-  {
+   {
+ 
     "url": "https://segment.yuppcdn.net/110322/polimernews/playlist.m3u8",
     "image": "https://storage.googleapis.com/madzjson/TamilNews/images/livetv/polimer_tv.png",
     "title": "Polimer News"
   },
+  
    {
     "url": "https://segment.yuppcdn.net/240122/puthiya/playlist.m3u8",
     "image": "https://storage.googleapis.com/madzjson/TamilNews/images/livetv/puthiya_thalaimurai_tv.png",
     "title": "Puthiya Thalamurai"
   },
   {
+    "id":"j1nzTy5q_1Y",
     "url": "https://cdn-3.pishow.tv/live/1612/master.m3u8",
     "image": "https://storage.googleapis.com/madzjson/TamilNews/images/livetv/thanthi_tv.png",
     "title": "Thanthi TV"
@@ -19,6 +22,7 @@
     "image": "https://storage.googleapis.com/madzjson/TamilNews/images/livetv/news18.png",
     "title": "News18 Tamil Nadu"
   },
+ 
   {
     "url": "https://cdn-3.pishow.tv/live/1279/master.m3u8",
     "image": "https://storage.googleapis.com/madzjson/TamilNews/images/livetv/newsj.png",
@@ -39,11 +43,13 @@
     "title": "Makkal TV",
     "url": "https://5k8q87azdy4v-hls-live.wmncdn.net/MAKKAL/271ddf829afeece44d8732757fba1a66.sdp/chunks.m3u8"
   },
+    {
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSk_VtmCtnfB3W4qBo-BoigiMcEevtaXUylvg&s",
+    "title": "DD Tamil",
+    "url": "https://d2lk5u59tns74c.cloudfront.net/out/v1/abf46b14847e45499f4a47f3a9afe93d/index.m3u8"
+  },
   
 
- 
- 
-  
 
   {
     "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRB7ev0iL2s4XvoY22PmHJP5zGNc5i2cBlTRA&s",
@@ -52,20 +58,19 @@
   },
 
   
-
-  
   {
     "id": "g_7IQn8BDro",
     "image": "https://media.assettype.com/kalaignarseithigal%2F2019-04%2F273604e9-3c45-44a4-9866-9584c01fddbd%2FNEWS_01.png?w=1200&auto=format%2Ccompress&ogImage=true",
     "title": "Kalaignar TV News"
   },
   {
-    "id": "pWiqhSvrjlU",
+    "id":"pWiqhSvrjlU",
+    "url": "https://segment.yuppcdn.net/240122/news7/playlist.m3u8",
     "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlmibdA2cUVZxNFSquspmjBbsps16uCixAfA&s",
     "title": "News7 Tamil"
   },
   {
-    "id": "DgtqnpksU_s",
+    "id": "RBRuyaG6tdk",
     "image": "https://storage.googleapis.com/madzjson/TamilNews/images/livetv/raj_news.png",
     "title": "Raj News"
   },
@@ -75,7 +80,7 @@
     "title": "Sathiyam News"
   },
   {
-    "url": "https://yuppnimresmum.akamaized.net/050522/murasu/playlist.m3u8?ads.channel=813&ads.content_custom_1_param=FAST&ads.user=2&ads.content_custom_3_param=YuppFastIndia&hdnts=st=1763378689~exp=1763400289~acl=!*/050522/murasu/*!/payload/yupptvott_5_-1_5e78f878045f40a4_IN_157.51.125.201_yuppfast_2_channel_146_-1/*~data=yupptvott_5_-1_5e78f878045f40a4_IN_157.51.125.201_yuppfast_2_channel_146_-1~hmac=b44e0802c9d55abf3d444a8a674e6ee120336f8ff7cb53c23324516b9e8a5747&ads.network_name=yuppfast&ads.app_store_url=&ads.app_bundle=&ads.content_livestream=1&ads.content_genre=MUSIC&ads.channel_name=Murasu&ads.language=TAM&ads.user=0",
+    "id": "nfbOn2WpARo",
     "image": "https://cdn.iphonewired.com/wp-content/uploads/2022/12/1670311601_600x600bb.jpg",
     "title": "Maalai Murasu"
   }

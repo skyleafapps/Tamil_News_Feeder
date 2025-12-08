@@ -1,22 +1,24 @@
- [{
-			"logo": "https://storage.googleapis.com/madzlocaltv/images/Tamilnews/fm/radio_mirchi.jpg",
-			"streamUrl": "http://stream2.oppocast.com/mi_stream",
-			"name": "Radio Mirchi"
+ [
+		{
+			"logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXV2R7cPiHL6tYWX7mJAS4TtdRx0nkmLQwrg&s",
+			"streamUrl": "http://centova.aarenworld.com/proxy/894tamilfm/stream",
+			"name": "Tamil 89.4 FM"
+		},
+		{
+			"logo": "https://play-lh.googleusercontent.com/h7e4oU23P8LGJiuJQN3mI7eCP3K-esjZszu9-wuQQ0YqUZe98GaeXi49-0FZq60e4KQ",
+			"streamUrl": "https://playerservices.streamtheworld.com/api/livestream-redirect/MINNAL_FMAAC.aac",
+			"name": "Minnal FM"
 		},
 		
-		{
-			"logo": "https://storage.googleapis.com/madzlocaltv/images/Tamilnews/fm/hello_fm.jpg",
-			"streamUrl": "http://stream2.oppocast.com/he_stream",
-			"name": "Hello FM"
-		},
+	
 		{
 			"logo": "https://storage.googleapis.com/madzlocaltv/images/Tamilnews/fm/radio_city.jpg",
-			"streamUrl": "http://stream2.oppocast.com/ci_stream",
+			"streamUrl": "https://strw3.openstream.co/1311?aw_0_1st.collectionid%3D4426%26stationId%3D4426%26publisherId%3D1335%26k%3D1764479031",
 			"name": "Radio City"
 		},
 		{
 			"logo": "https://storage.googleapis.com/madzlocaltv/images/Tamilnews/fm/big_fm.jpg",
-			"streamUrl": "http://stream2.oppocast.com/bi_stream",
+			"streamUrl": "https://strw3.openstream.co/1319?aw_0_1st.collectionid%3D4434%26stationId%3D4434%26publisherId%3D1343%26k%3D1764478918",
 			"name": "BIG FM"
 		},
 		{
@@ -34,14 +36,10 @@
 			"streamUrl": "https://yuppmedtaorire.akamaized.net/v1/master/a0d007312bfd99c47f76b77ae26b1ccdaae76cb1/news7_nim_https/240122/news7/playlist.m3u8",
 			"name": "News 7"
 		},
-		{
-			"name": "Vadivelu Comedy",
-			"streamUrl": "http://stream.zeno.fm/02n962ezyp8uv",
-			"logo": "https://storage.googleapis.com/tamilnews/FM/images/Vadivelu-Comedy-Radio.png"
-		},
+
 		{
 			"name": "Tamil Comedy ",
-			"streamUrl": "http://live.tamilkuyilradio.com:8035/tamilcomedyradio",
+			"streamUrl": "https://stream-175.zeno.fm/tmgktm50dzzuv?zt=eyJhbGciOiJIUzI1NiJ9.eyJzdHJlYW0iOiJ0bWdrdG01MGR6enV2IiwiaG9zdCI6InN0cmVhbS0xNzUuemVuby5mbSIsInJ0dGwiOjUsImp0aSI6Im1nbG9zSFIwUzktaWpwWUQzdUFTT1EiLCJpYXQiOjE3NjQ0NzkxMzUsImV4cCI6MTc2NDQ3OTE5NX0.fAzzlRA5dWSbRjvUGtOL7FYBrrs0_eIQUr1mskZYNtc",
 			"logo": "https://storage.googleapis.com/tamilnews/FM/images/Tamil-Comedy-Radio.png"
 		},
 		{
@@ -51,22 +49,22 @@
 		},
 		{
 			"logo": "https://storage.googleapis.com/madzlocaltv/images/Tamilnews/fm/ilayaraja.png",
-			"streamUrl": "http://live.tamilkuyilradio.com:8026/rajaradio",
+			"streamUrl": "https://stream.zeno.fm/5u2c0yh0ekhvv",
 			"name": "Raja HD"
 		},
 		{
 			"logo": "https://storage.googleapis.com/madzlocaltv/images/Tamilnews/fm/ilayaraja.png",
-			"streamUrl": "http://stream.zenolive.com/pwm9y3eud5zuv",
+			"streamUrl": "https://stream.zeno.fm/6ekq4z61w0hvv",
 			"name": "Ilayaraja Radio"
 		},
 		{
 			"logo": "https://storage.googleapis.com/madzlocaltv/images/Tamilnews/fm/ilayaraja.png",
-			"streamUrl": "http://stream.zeno.fm/zngnvwy9bm8uv",
+			"streamUrl": "https://stream.zeno.fm/pvs9y6c4138uv",
 			"name": "Ilayaraja Hits"
 		},
 		{
 			"logo": "https://storage.googleapis.com/madzlocaltv/images/Tamilnews/fm/ilayaraja.png",
-			"streamUrl": "http://stream.zenolive.com/476bw00re5zuv",
+			"streamUrl": "https://stream.zeno.fm/s1ydp51scuhvv",
 			"name": "Ilayaraja Love"
 		},
 		
