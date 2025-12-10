@@ -31,12 +31,7 @@ const feedSources = {
     'Vikatan Cinema',
   'https://www.vikatan.com/api/v1/collections/automobile.rss?&time-period=last-24-hours':
     'Vikatan Automobile',
-  'https://tamil.news18.com/commonfeeds/v1/tam/rss/lifestyle/food.xml':
-    'News 18 Life style',
-  'https://tamil.news18.com/commonfeeds/v1/tam/rss/sports/cricket.xml':
-    'News 18 Cricket',
-  'https://tamil.news18.com/commonfeeds/v1/tam/rss/business/agriculture.xml':
-    'News 18 Agriculture',
+
 };
 
 const feedUrls = Object.keys(feedSources);

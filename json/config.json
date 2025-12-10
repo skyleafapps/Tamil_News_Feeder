@@ -7,7 +7,7 @@
 
         "forceUpdateEnabled": true,   
         "latestVersion": "1.2",            
-        "forceUpdateText": "Please update to use the app"
+        "forceUpdateText": "ஆப்பைப் பயன்படுத்த, தயவுசெய்து புதுப்பிக்கவும்."
     },
 
     "main": {
@@ -30,7 +30,7 @@
     "newspaper_ad_enabled": true,
     "newspaper_ad_first_click": 3,
     "newspaper_ad_frequency": 5,
-    
+
      "player_banner_enabled":true,
   
     "bannerAndroid": "ca-app-pub-2470169548355565/5951758349",

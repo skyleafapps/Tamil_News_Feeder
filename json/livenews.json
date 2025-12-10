@@ -17,11 +17,7 @@
     "image": "https://storage.googleapis.com/madzjson/TamilNews/images/livetv/thanthi_tv.png",
     "title": "Thanthi TV"
   },
-  {
-    "url": "https://nw18live.cdn.jio.com/bpk-tv/News18_Tamil_Nadu_NW18_MOB/output01/index.m3u8",
-    "image": "https://storage.googleapis.com/madzjson/TamilNews/images/livetv/news18.png",
-    "title": "News18 Tamil Nadu"
-  },
+
  
   {
     "url": "https://cdn-3.pishow.tv/live/1279/master.m3u8",
