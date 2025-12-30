@@ -1,0 +1,31 @@
+name: Run index.js every 30 minutes
+
+on:
+  schedule:
+    - cron: '0,30 * * * *'   # every 30 minutes (UTC)
+  workflow_dispatch:
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run index.js (show logs only)
+        env:
+          FIREBASE_KEY: ${{ secrets.FIREBASE_KEY }}
+          YT_API_KEY: ${{ secrets.YT_API_KEY }}
+          CHANNEL_IDS: ${{ secrets.CHANNEL_IDS }}
+        run: |
+          echo "🕐 Running index.js at $(date '+%Y-%m-%d %H:%M:%S %Z')"
+          node index.js
+          echo "✅ Script finished at $(date '+%Y-%m-%d %H:%M:%S %Z')"
