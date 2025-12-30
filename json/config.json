@@ -2,43 +2,43 @@
   "app_config": {
     "global_notice": {
       "dialogText": "This version is outdated. Download the new app.",
-      "playStoreUrl": "https://play.google.com/store/apps/details?id=com.quickleaf.tamilnews",
+      "playStoreUrl": "https://play.google.com/store/apps/details?id=com.tamil.livenews.fmradio",
       "showDialog": false,
 
-        "forceUpdateEnabled": true,   
-        "latestVersion": "1.2",            
+        "forceUpdateEnabled": false,   
+        "latestVersion": "1.3",            
         "forceUpdateText": "ஆப்பைப் பயன்படுத்த, தயவுசெய்து புதுப்பிக்கவும்."
     },
 
     "main": {
       "show_review_modal": true,
-      "review_cooldown_days":3,
+      "review_cooldown_days":0,
       "review_message": "உங்களுக்கு மேலும் நல்ல சேவை வழங்க, தயவுசெய்து எங்கள் ஆப்பை மதிப்பிடுங்கள்.",
       "review_now_btn_text": "மதிப்பிடவும்",
       "exit_btn_text": "வெளியேறு",
       
 
-      "contactContent": "contact us quickleafapps@gmail.com",
+      "contactContent": "contact us skyleafapps@gmail.com",
       "disclaimerContent": "Dear Respected Copyright Owner, We deeply respect the intellectual property rights of all creators and copyright holders. The content provided in this application is intended for informational and educational purposes only, and is not intended to infringe upon any copyright in any manner. Our sole intent is to educate, inform, inspire, and celebrate the brilliance of your work — never to violate your rights. We believe that great ideas and creations deserve appreciation and recognition, and our goal is to share them in a manner that honors your contribution. Your creativity has inspired and brought joy to many, and we are truly grateful for your work. We would be honored to continue showcasing it in a way that reflects respect and admiration for your efforts. If you are the rightful owner of any content used in this material and wish for it to be removed or properly credited, please contact us. We will review and act upon your request immediately and respectfully. We highly value and respect all creators and are fully committed to ensuring that your rights are protected. Please contact us at quickleafapps@gmail.com — any content identified will be promptly reviewed and permanently removed if requested.",
       "privacyLink": "https://sites.google.com/view/privacypolicy-tamilnewsapp/home",
-      "rateLink": "https://play.google.com/store/apps/details?id=com.quickleaf.tamilnews",
-      "shareLink": "https://play.google.com/store/apps/details?id=com.quickleaf.tamilnews",
-     "livenews_ad_enabled": true,
+      "rateLink": "https://play.google.com/store/apps/details?id=com.tamil.livenews.fmradio",
+      "shareLink": "https://play.google.com/store/apps/details?id=com.tamil.livenews.fmradio",
+     "livenews_ad_enabled": false,
     "livenews_ad_first_click": 3,
     "livenews_ad_frequency": 5,
 
-    "newspaper_ad_enabled": true,
+    "newspaper_ad_enabled": false,
     "newspaper_ad_first_click": 3,
     "newspaper_ad_frequency": 5,
 
-     "player_banner_enabled":true,
+     "player_banner_enabled":false,
   
-    "bannerAndroid": "ca-app-pub-2470169548355565/5951758349",
-  "mediumRectangleAndroid": "ca-app-pub-2470169548355565/8956748522",
-  "liveInterstitialAndroid": "ca-app-pub-2470169548355565/9450664359",
-  "paperInterstitialAndroid": "ca-app-pub-2470169548355565/5656244879",
-  "fmMediumRectangleAndroid": "ca-app-pub-2470169548355565/2314884759",
-    "playerBannerAndroid":"ca-app-pub-2470169548355565/6194602167"
+    "bannerAndroid": "ca-app-pub-2099217985955903/5051992954",
+  "mediumRectangleAndroid": "ca-app-pub-2099217985955903/8005459353",
+  "liveInterstitialAndroid": "ca-app-pub-2099217985955903/5227252775",
+  "paperInterstitialAndroid": "ca-app-pub-2099217985955903/6365074629",
+  "fmMediumRectangleAndroid": "ca-app-pub-2099217985955903/4066214341",
+    "playerBannerAndroid":"ca-app-pub-2099217985955903/3547339599"
     }
   }
 }

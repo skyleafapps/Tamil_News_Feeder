@@ -24,7 +24,7 @@ const FILE_PATH = '../json/fm.json'; // your FM list file
 async function uploadFmStations() {
   const fmStations = JSON.parse(fs.readFileSync(FILE_PATH, 'utf8'));
 
-  const docRef = db.collection('fmstations').doc('list');
+  const docRef = db.collection('fm').doc('list');
 
   // 🔥 Get existing version
   const snap = await docRef.get();
@@ -38,9 +38,9 @@ async function uploadFmStations() {
   await docRef.set({
     version,
     items: fmStations.map((f) => ({
-      name: f.name || 'Untitled Station',
-      streamUrl: f.streamUrl || '',
-      logo: f.logo || '',
+      title: f.name || 'Untitled Station',
+      url: f.streamUrl || '',
+      img: f.logo || '',
     })),
   });
 

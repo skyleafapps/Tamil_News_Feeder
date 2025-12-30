@@ -1,11 +1,20 @@
-// prices.js  (Node 18+)
+// prices.js (Node 18+ / ESM)
 import * as cheerio from "cheerio";
 
-const URLS = [
-  "https://www.tanishq.co.in/shop/gold-rate?lang=en",      // try this first
-  "https://www.tanishq.co.in/gold-rate.html?lang=en_IN"    // fallback
+// ─────────────────────────────────────────────
+// URLs
+// ─────────────────────────────────────────────
+const GOLD_URLS = [
+  "https://www.tanishq.co.in/shop/gold-rate?lang=en",
+  "https://www.tanishq.co.in/gold-rate.html?lang=en_IN",
 ];
 
+const SILVER_URL =
+  "https://www.thehindubusinessline.com/silver-rate-today/Chennai/";
+
+// ─────────────────────────────────────────────
+// Helpers
+// ─────────────────────────────────────────────
 const toINR = (s) => {
   const n = String(s).replace(/[^\d]/g, "");
   return n ? Number(n) : null;
@@ -16,39 +25,12 @@ const toSignedInt = (s) => {
   return cleaned ? Number(cleaned) : null;
 };
 
-const toPercent = (s) => {
-  const cleaned = String(s).replace(/[()%\s]/g, "");
-  return cleaned ? Number(cleaned) : null;
-};
-
-function extractRow($, tr) {
-  const $tr = $(tr);
-  const gramsText = $tr.find("td").eq(0).text().replace(/\s+/g, " ").trim(); // "1 G"
-  const grams = Number(gramsText.replace(/[^\d]/g, ""));
-
-  const $today = $tr.find("td").eq(1);
-
-  const todayPrice = toINR(
-    $today.clone().find(".pricechange-value").remove().end().text()
-  );
-
-  const todayChangeRate = toSignedInt(
-    $today.find(".difference-rate").first().text()
-  );
-  const todayChangePct = toPercent(
-    $today.find(".difference-percentage").first().text()
-  );
-
-  return {
-    grams,
-    today: {
-      price: todayPrice,
-      change: { rate: todayChangeRate, percent: todayChangePct },
-    },
-  };
+function percentFrom(rate, base) {
+  if (rate == null || base == null || base === 0) return null;
+  return Number(((rate / base) * 100).toFixed(2));
 }
 
-async function fetchHtml(url) {
+async function fetchHtml(url, extraHeaders = {}) {
   const res = await fetch(url, {
     headers: {
       "user-agent":
@@ -58,7 +40,7 @@ async function fetchHtml(url) {
       "accept-language": "en-IN,en;q=0.9",
       "cache-control": "no-cache",
       pragma: "no-cache",
-      referer: "https://www.tanishq.co.in/",
+      ...extraHeaders,
     },
   });
 
@@ -72,52 +54,146 @@ async function fetchHtml(url) {
   return await res.text();
 }
 
-async function main() {
+// ─────────────────────────────────────────────
+// GOLD (Tanishq)
+// ─────────────────────────────────────────────
+function extractGoldRow($, tr) {
+  const $tr = $(tr);
+  const gramsText = $tr.find("td").eq(0).text().replace(/\s+/g, " ").trim(); // "10 G"
+  const grams = Number(gramsText.replace(/[^\d]/g, ""));
+
+  const $today = $tr.find("td").eq(1);
+
+  const todayPrice = toINR(
+    $today.clone().find(".pricechange-value").remove().end().text()
+  );
+
+  const todayChangeRate = toSignedInt(
+    $today.find(".difference-rate").first().text()
+  );
+
+  const todayChangePct = Number(
+    String($today.find(".difference-percentage").first().text())
+      .replace(/[()%\s]/g, "")
+      .trim()
+  );
+  const pct = Number.isFinite(todayChangePct) ? todayChangePct : null;
+
+  return {
+    grams,
+    today: {
+      price: todayPrice,
+      change: { rate: todayChangeRate, percent: pct },
+    },
+  };
+}
+
+async function fetchGold() {
   let html = null;
-  let usedUrl = null;
   let lastErr = null;
 
-  for (const u of URLS) {
+  for (const u of GOLD_URLS) {
     try {
-      html = await fetchHtml(u);
-      usedUrl = u;
+      html = await fetchHtml(u, { referer: "https://www.tanishq.co.in/" });
       break;
     } catch (e) {
       lastErr = e;
     }
   }
 
-  if (!html) {
-    console.error("Blocked (403) on both URLs.");
-    console.error(
-      "Tip: run this from a normal home network IP (not VPS/serverless), or reduce frequency."
-    );
-    throw lastErr;
-  }
+  if (!html) throw lastErr;
 
   const $ = cheerio.load(html);
 
-  // Your table:
   const rows = $("table.goldrate-table-22kt tbody tr");
-  const wanted = new Set([1, 8]);
+  const wanted = new Set([1, 10]); // ✅ GOLD: 1g + 10g
   const rates = {};
 
   rows.each((_, tr) => {
-    const row = extractRow($, tr);
-    if (wanted.has(row.grams)) {
-      rates[String(row.grams)] = row;
-    }
+    const row = extractGoldRow($, tr);
+    if (wanted.has(row.grams)) rates[String(row.grams)] = row;
   });
 
-  const out = {
-    // source: usedUrl,   // ❌ removed as requested
-    fetchedAt: new Date().toISOString(),
+  return {
     karat: 22,
     currency: "INR",
     today: {
       "1g": rates["1"]?.today ?? null,
-      "8g": rates["8"]?.today ?? null,
+      "10g": rates["10"]?.today ?? null,
     },
+  };
+}
+
+// ─────────────────────────────────────────────
+// SILVER (HinduBusinessLine Chennai)
+// ─────────────────────────────────────────────
+function parseSilverUnitKey(unitTextRaw) {
+  const t = String(unitTextRaw).toLowerCase().replace(/\s+/g, " ").trim();
+  if (t.includes("1 gram") || t === "1g" || t === "1 gram") return "1g";
+  if (t.includes("1 kg") || t.includes("1kg")) return "1kg";
+  return null;
+}
+
+async function fetchSilver() {
+  const html = await fetchHtml(SILVER_URL, {
+    referer: "https://www.thehindubusinessline.com/",
+  });
+
+  const $ = cheerio.load(html);
+
+  // Your snippet:
+  const table = $("div.table-companies table.table-balance-sheet").first();
+  const rows = table.find("tbody tr");
+
+  const out = {
+    currency: "INR",
+    today: {
+      "1g": null,
+      "1kg": null,
+    },
+  };
+
+  rows.each((_, tr) => {
+    const tds = $(tr).find("td");
+    if (tds.length < 4) return;
+
+    const unitText = tds.eq(0).text();
+    const key = parseSilverUnitKey(unitText);
+    if (!key) return;
+
+    const todayPrice = toINR(tds.eq(1).text());
+    const yesterdayPrice = toINR(tds.eq(2).text());
+
+    // Prefer computed change for reliability:
+    const rate =
+      todayPrice != null && yesterdayPrice != null
+        ? todayPrice - yesterdayPrice
+        : toSignedInt(tds.eq(3).text());
+
+    const pct = percentFrom(rate, yesterdayPrice);
+
+    out.today[key] = {
+      price: todayPrice,
+      change: { rate: rate, percent: pct },
+    };
+  });
+
+  return out;
+}
+
+// ─────────────────────────────────────────────
+// MAIN (common fetchedAt)
+// ─────────────────────────────────────────────
+async function main() {
+  const fetchedAt = new Date().toISOString();
+
+  const [gold, silver] = await Promise.all([fetchGold(), fetchSilver()]);
+
+  const out = {
+    fetchedAt, // ✅ common date
+    currency: "INR",
+    gold,
+    silver,
   };
 
   console.log(JSON.stringify(out, null, 2));

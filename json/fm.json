@@ -164,6 +164,120 @@
 			"name": "Anbu Kaanoli",
 			"streamUrl": "http://stream.zeno.fm/5csru2np4bruv",
 			"logo": "https://storage.googleapis.com/tamilnews/FM/images/anbu.png"
-		}
+		},
+		{
+  "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7bUcHpMfNRpaPk_c68hGo0dJfWgiG4ridUw&s",
+  "streamUrl": "http://217.217.248.33/listen/bakthi_padalgal/radio.mp3",
+  "name": "Bakthi Padalgal"
+},
+{
+  "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1eSlX1SHOALOrF3uZf_9k_xk1BPqFZGXBXA&s",
+  "streamUrl": "http://51.79.254.253:8010/radio.mp3",
+  "name": "Bhakti Amudham Radio"
+},
+{
+  "logo": "https://tamilradios.net/webpimg/radio_67495_Bakthi-Isai-FM.webp",
+  "streamUrl": "http://bakthiisai-unicast2u.radioca.st/stream",
+  "name": "Bakthi Isai Radio"
+},
+{
+    "logo": "https://tamilradios.net/webpimg/radio_64640_tkmradio.webp",
+    "streamUrl": "https://cast6.asurahosting.com/proxy/tkmradio/stream",
+    "name": "Tamil Kadavul Murugan"
+  },
+  {
+    "logo": "https://liveradios.in/wp-content/uploads/mantra.jpg",
+    "streamUrl": "https://whsh4u-panel.com/proxy/gsedemag?mp=/stream",
+    "name": "Mantras Radio"
+  },
+  {
+    "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsZvhETjJsTriDY971LxKyRgn8w4OgEf9pLg&s",
+    "streamUrl": "https://sivanradio.radioca.st/stream",
+    "name": "Sivan Radio"
+  },
+  {
+    "logo": "https://cdn-images.dzcdn.net/images/cover/5204625048e1c611b6e557388b3c2015/1900x1900-000000-81-0-0.jpg",
+    "streamUrl": "https://files.samadada.com/devotional/general/03_SRI_VENKATESHA_SUPRABHATHAM/SRI_VENKATESA_SUPRABHATHAM.mp3",
+    "name": "Suprabhatam"
+  },
+  {
+    "logo": "https://c.saavncdn.com/598/Kandha-Sasti-Kavasam-Tamil-2019-20230816231253-500x500.jpg",
+    "streamUrl": "https://files.samadada.com/devotional/murugan/09_SKANDHA_SASHTI_KAVACHAM/SKANDHA_SASHTI_KAVASAM.mp3",
+    "name": "Kandha Sasti Kavasam"
+  },
+  {
+    "logo": "http://hdfmradio.com/wp-content/uploads/2022/08/SS-Radio-Devotional.webp",
+    "streamUrl": "https://cast6.asurahosting.com/proxy/ssdevotional/stream",
+    "name": "SS Devotional Radio"
+  },
+  {
+  "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYO-7EE2pWYVpknT9-EqFJoPd1MrFXmkD2sA&s",
+  "streamUrl": "http://stream.zeno.fm/whqnz2veyy8uv",
+  "name": "Ohmnamashivaya Radio"
+},
+{
+    "logo": "https://play-lh.googleusercontent.com/iPIOUabrAuqbXkpnDWOY3vais0igIGMItG3BjfsBsgd9uMnXv1r8jjw712SO06rokTNz",
+    "streamUrl": "https://centova71.instainternet.com/proxy/tamilchristianradio?mp=/stream&1691054211866",
+    "name": "Tamil Christian Radio"
+  },
+  {
+    "logo": "http://hdfmradio.com/wp-content/uploads/2022/07/Theophony-Tamil.webp",
+    "streamUrl": "https://mediatechnica.com:2020/stream/theophonytamilaac",
+    "name": "Theophony Tamil"
+  },
+  {
+    "logo": "http://hdfmradio.com/wp-content/uploads/2022/05/Jehovah-Rapha-FM-1.webp",
+    "streamUrl": "https://c22.radioboss.fm:8532/jehovahrapha",
+    "name": "Jehovah Rapha FM"
+  },
+  {
+    "logo": "https://play-lh.googleusercontent.com/iPIOUabrAuqbXkpnDWOY3vais0igIGMItG3BjfsBsgd9uMnXv1r8jjw712SO06rokTNz",
+    "streamUrl": "http://centova71.instainternet.com:9092//stream?type=http&nocache=2",
+    "name": "Aaruthal FM"
+  },
+  {
+    "logo": "https://play-lh.googleusercontent.com/MFPPn0_swnOwYtKFB6ADbHC_btQLsixVayKAeOtrmafd5SlGRcfho5D0sVMv1YqSOw",
+    "streamUrl": "https://ice7.securenetsystems.net/AMENFM",
+    "name": "Amen FM"
+  },
+  {
+    "logo": "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/0f/e5/a2/0fe5a291-6291-c680-26a3-2375660aa5b0/cover.jpg/600x600bf-60.jpg",
+    "streamUrl": "http://217.217.248.33/listen/annai_velankanni_radio/radio.mp3",
+    "name": "Annai Velankanni Radio"
+  },
+  {
+    "logo": "https://tamilradios.net/webpimg/radio_95991_nagore.webp",
+    "streamUrl": "http://217.217.248.33/listen/nagoor_hanifa/radio.mp3",
+    "name": "Nagoor Hanifa"
+  },
+  {
+    "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFikl0UCiUCEKrRjAGoMJ2YOo4t4rTG4x-Vw&s",
+    "streamUrl": "https://download.quranicaudio.com/qdc/abu_bakr_shatri/murattal/83.mp3",
+    "name": "Quran Radio"
+  },
+  {
+    "logo": "https://liveradios.in/wp-content/uploads/voice-of-islam.jpg",
+    "streamUrl": "http://stream.zeno.fm/eeaw632er2zuv",
+    "name": "Islamic Radio"
+  },
+  {
+    "logo": "http://hdfmradio.com/wp-content/uploads/2023/04/SS-Islamic-Radio.webp",
+    "streamUrl": "https://cast6.asurahosting.com/proxy/islamicradio/stream",
+    "name": "SS Islamic Radio"
+  },
+  {
+    "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjv2CEh3Y95h4T-8ARaq_4iEHz84IQJufqVg&s",
+    "streamUrl": "http://136.243.44.41:8494/stream",
+    "name": "Sanganatham FM"
+  },
+  {
+    "logo": "http://hdfmradio.com/wp-content/uploads/2022/09/Bisme-Radio.webp",
+    "streamUrl": "https://stream.rcs.revma.com/pcr8x50uty8uv",
+    "name": "Bisme Radio"
+  }
+
+
+
+
 		
 	]
