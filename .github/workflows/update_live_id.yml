@@ -1,0 +1,54 @@
+name: Update YouTube Live IDs (hourly)
+
+on:
+  workflow_dispatch: {}
+  schedule:
+    # GitHub cron is UTC. "30 * * * *" => runs at :00 IST every hour.
+    - cron: "30 * * * *"
+
+concurrency:
+  group: update-videoid-hourly
+  cancel-in-progress: true
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+
+    # ✅ Put ALL your required .env keys here with SAME names (set them in GitHub Secrets)
+    env:
+      YT_API_KEY: ${{ secrets.YT_API_KEY }}
+
+      # --- Add your uploader/firestore keys if needed (keep same names your code uses) ---
+      FIREBASE_KEY: ${{ secrets.FIREBASE_KEY }}
+      FIREBASE_PROJECT_ID: ${{ secrets.FIREBASE_PROJECT_ID }}
+      FIREBASE_CLIENT_EMAIL: ${{ secrets.FIREBASE_CLIENT_EMAIL }}
+      FIREBASE_PRIVATE_KEY: ${{ secrets.FIREBASE_PRIVATE_KEY }}
+      # FCM_SERVER_KEY: ${{ secrets.FCM_SERVER_KEY }}
+      # ANY_OTHER_KEY: ${{ secrets.ANY_OTHER_KEY }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node 18
+        uses: actions/setup-node@v4
+        with:
+          node-version: "18"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      # ✅ Debug: confirm the file exists in the checked-out default branch
+      - name: Debug - show branch + files
+        run: |
+          pwd
+          git branch --show-current
+          ls -la
+          echo "---- check update_videoId.js ----"
+          ls -la update_videoId.js || true
+          echo "---- find file ----"
+          find . -maxdepth 2 -type f -name "update_videoId.js" -o -name "update_videoid.js"
+
+      - name: Run updater
+        run: node update_videoId.js
