@@ -1,7 +1,7 @@
 {
   "app_config": {
     "global_notice": {
-      "dialogText": "This version is outdated. Download the new app.",
+      "dialogText": "This version is outdated. Download the new app.    நாங்கள் இந்த பழைய செயலிக்கு ஆதரவை நிறுத்த இருக்கிறோம். தயவுசெய்து எங்கள் புதிய  செயலியை பதிவிறக்குங்கள்.",
       "playStoreUrl": "https://play.google.com/store/apps/details?id=com.tamil.livenews.fmradio",
       "showDialog": false,
 
@@ -16,7 +16,13 @@
       "review_message": "உங்களுக்கு மேலும் நல்ல சேவை வழங்க, தயவுசெய்து எங்கள் ஆப்பை மதிப்பிடுங்கள்.",
       "review_now_btn_text": "மதிப்பிடவும்",
       "exit_btn_text": "வெளியேறு",
-      
+
+      "youtubeiframe":true,
+
+  "notice_enabled": false,
+  "notice_url": "https://www.google.com/search?q=1080x1600+image+size&sca_esv=a7b494c8dfb9f393&udm=2&biw=1536&bih=730&sxsrf=AE3TifNSMD5OjkHaiHcVdf4ayoaVRjNW-w%3A1767604679841&ei=x4FbaaiYM4SuseMP54Wo6A0&ved=0ahUKEwjol67IiPSRAxUEV2wGHecCCt0Q4dUDCBI&uact=5&oq=1080x1600+image+size&gs_lp=Egtnd3Mtd2l6LWltZyIUMTA4MHgxNjAwIGltYWdlIHNpemVI8Q1QOViFDHABeACQAQCYAekBoAGjCqoBAzItNrgBA8gBAPgBAZgCAKACAJgDAIgGAZIHAKAHjgKyBwC4BwDCBwDIBwCACAA&sclient=gws-wiz-img#sv=CAMSVhoyKhBlLVZvZGZCd1QwLVpUMTRNMg5Wb2RmQndUMC1aVDE0TToObDFIZ1RCaXpCWVJyS00gBCocCgZtb3NhaWMSEGUtVm9kZkJ3VDAtWlQxNE0YADABGAcgrN7DhAMwAkoKCAIQAhgCIAIoAg",
+  "notice_mode": "BROWSER",
+  "notice_image_url": "https://littlevillagemag.com/wp-content/uploads/2025/06/f1-the-movie-1080x1600-1.jpg",
 
       "contactContent": "contact us skyleafapps@gmail.com",
       "disclaimerContent": "Dear Respected Copyright Owner, We deeply respect the intellectual property rights of all creators and copyright holders. The content provided in this application is intended for informational and educational purposes only, and is not intended to infringe upon any copyright in any manner. Our sole intent is to educate, inform, inspire, and celebrate the brilliance of your work — never to violate your rights. We believe that great ideas and creations deserve appreciation and recognition, and our goal is to share them in a manner that honors your contribution. Your creativity has inspired and brought joy to many, and we are truly grateful for your work. We would be honored to continue showcasing it in a way that reflects respect and admiration for your efforts. If you are the rightful owner of any content used in this material and wish for it to be removed or properly credited, please contact us. We will review and act upon your request immediately and respectfully. We highly value and respect all creators and are fully committed to ensuring that your rights are protected. Please contact us at quickleafapps@gmail.com — any content identified will be promptly reviewed and permanently removed if requested.",

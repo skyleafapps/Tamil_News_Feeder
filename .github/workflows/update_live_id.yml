@@ -14,17 +14,16 @@ jobs:
   run:
     runs-on: ubuntu-latest
 
-    # ✅ Put ALL your required .env keys here with SAME names (set them in GitHub Secrets)
     env:
       YT_API_KEY: ${{ secrets.YT_API_KEY }}
 
-      # --- Add your uploader/firestore keys if needed (keep same names your code uses) ---
+      # Firebase admin json (base64 or raw json string) - your script supports both
       FIREBASE_KEY: ${{ secrets.FIREBASE_KEY }}
+
+      # (Optional) if you use these elsewhere, keep them
       FIREBASE_PROJECT_ID: ${{ secrets.FIREBASE_PROJECT_ID }}
       FIREBASE_CLIENT_EMAIL: ${{ secrets.FIREBASE_CLIENT_EMAIL }}
       FIREBASE_PRIVATE_KEY: ${{ secrets.FIREBASE_PRIVATE_KEY }}
-      # FCM_SERVER_KEY: ${{ secrets.FCM_SERVER_KEY }}
-      # ANY_OTHER_KEY: ${{ secrets.ANY_OTHER_KEY }}
 
     steps:
       - name: Checkout
@@ -39,16 +38,16 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      # ✅ Debug: confirm the file exists in the checked-out default branch
-      - name: Debug - show branch + files
+      # ✅ Debug: confirm the file exists
+      - name: Debug - show files
         run: |
           pwd
           git branch --show-current
           ls -la
-          echo "---- check update_videoId.js ----"
-          ls -la update_videoId.js || true
+          echo "---- check extract/update_video_id_cron.js ----"
+          ls -la extract/update_video_id_cron.js || true
           echo "---- find file ----"
-          find . -maxdepth 2 -type f -name "update_videoId.js" -o -name "update_videoid.js"
+          find . -maxdepth 3 -type f -name "update_video_id_cron.js"
 
       - name: Run updater
-        run: node update_videoId.js
+        run: node extract/update_video_id_cron.js
