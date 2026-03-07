@@ -1,6 +1,6 @@
 [
   {
-    "url": "https://segment.yuppcdn.net/110322/polimernews/playlist.m3u8",
+    "id":"6xCrWQEcJZM",
     "image": "https://storage.googleapis.com/madzjson/TamilNews/images/livetv/polimer_tv.png",
     "title": "Polimer News"
   },
@@ -10,7 +10,7 @@
     "title": "Puthiya Thalamurai"
   },
   {
-    "url": "https://servertvhub.site/jio/app/ts_live_830.m3u8",
+    "id": "8kjza8MzPXE",
     
     "image": "https://storage.googleapis.com/madzjson/TamilNews/images/livetv/thanthi_tv.png",
     "title": "Thanthi TV"
