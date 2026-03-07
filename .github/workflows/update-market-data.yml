@@ -2,16 +2,16 @@ name: Update Market Data
 
 on:
   schedule:
-    # 6:00 AM IST  (00:30 UTC)
+    # 6:00 AM IST (00:30 UTC)
     - cron: '30 0 * * *'
 
     # 11:00 AM IST (05:30 UTC)
     - cron: '30 5 * * *'
 
-    # 4:00 PM IST  (10:30 UTC)
+    # 4:00 PM IST (10:30 UTC)
     - cron: '30 10 * * *'
 
-  workflow_dispatch:   # allows manual run from GitHub UI
+  workflow_dispatch:
 
 jobs:
   update-market:
@@ -27,10 +27,11 @@ jobs:
           node-version: 20
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
-      - name: Install Playwright Browsers
-        run: npx playwright install chromium
+      # ✅ THIS IS THE IMPORTANT FIX
+      - name: Install Playwright browsers + dependencies
+        run: npx playwright install --with-deps chromium
 
       - name: Run Market Data Script
         env:
