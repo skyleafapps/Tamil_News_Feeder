@@ -1,0 +1,38 @@
+name: Update Market Data
+
+on:
+  schedule:
+    # 6:00 AM IST  (00:30 UTC)
+    - cron: '30 0 * * *'
+
+    # 11:00 AM IST (05:30 UTC)
+    - cron: '30 5 * * *'
+
+    # 4:00 PM IST  (10:30 UTC)
+    - cron: '30 10 * * *'
+
+  workflow_dispatch:   # allows manual run from GitHub UI
+
+jobs:
+  update-market:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Install Playwright Browsers
+        run: npx playwright install chromium
+
+      - name: Run Market Data Script
+        env:
+          FIREBASE_KEY: ${{ secrets.FIREBASE_KEY }}
+        run: node update_market_data.cjs
