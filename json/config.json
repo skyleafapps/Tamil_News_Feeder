@@ -39,6 +39,18 @@
     "newspaper_ad_frequency": 5,
 
      "player_banner_enabled":false,
+
+
+      "showAllStreamsBanner": true,
+  "showAllStreamsPlayerBanner": true,
+  "showAllStreamsInterstitial": false,
+  "showMarketPricesBanner": true,
+  "allStreamsInterstitial_first_click": 2,
+  "allStreamsInterstitial_frequency": 0,
+  "allStreamsBannerAndroid": "ca-app-pub-3940256099942544/6300978111",
+  "allStreamsPlayerBannerAndroid": "ca-app-pub-3940256099942544/6300978111",
+  "allStreamsInterstitialAndroid": "ca-app-pub-3940256099942544/1033173712",
+  "marketPricesBannerAndroid": "ca-app-pub-3940256099942544/6300978111",
   
     "bannerAndroid": "ca-app-pub-2099217985955903/5051992954",
   "mediumRectangleAndroid": "ca-app-pub-2099217985955903/8005459353",
