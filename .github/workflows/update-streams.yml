@@ -22,7 +22,7 @@ jobs:
         run: npm install
 
       - name: Run Stream Updater
-        run: node update_all_streams.js
+        run: node update_all_streams.cjs
         env:
           YT_API_KEY_FOR_ALL_STREAMS: ${{ secrets.YT_API_KEY_FOR_ALL_STREAMS }}
           FIREBASE_KEY: ${{ secrets.FIREBASE_KEY }}
