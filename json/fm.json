@@ -121,7 +121,18 @@
 			"streamUrl": "https://stream.zeno.fm/s1ydp51scuhvv",
 			"name": "Ilayaraja Love"
 		},
-		
+		 {
+      
+        "name": "T.M.Soundararajan",
+        "logo": "https://hdfmradio.com/wp-content/uploads/2020/10/t.-m.-soundararajan.webp",
+        "streamUrl": "https://stream.zeno.fm/xx7raqc1c48uv"
+    },
+	{
+    
+        "name": "M.S.Viswanathan",
+        "logo": "https://hdfmradio.com/wp-content/uploads/2020/11/MS-Vishwanathan.webp",
+        "streamUrl": "https://stream.zeno.fm/z0t17g83b48uv"
+    },
 		{
 			"name": "A.R.Rahman Radio",
 			"streamUrl": "http://stream.zenolive.com/p7b0e3ms97zuv",

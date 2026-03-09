@@ -5,14 +5,14 @@
       "playStoreUrl": "https://play.google.com/store/apps/details?id=com.tamil.livenews.fmradio",
       "showDialog": false,
 
-        "forceUpdateEnabled": false,   
-        "latestVersion": "1.3",            
+        "forceUpdateEnabled": true,   
+        "latestVersion": "1.2",            
         "forceUpdateText": "ஆப்பைப் பயன்படுத்த, தயவுசெய்து புதுப்பிக்கவும்."
     },
 
     "main": {
       "show_review_modal": true,
-      "review_cooldown_days":0,
+      "review_cooldown_days":2,
       "review_message": "உங்களுக்கு மேலும் நல்ல சேவை வழங்க, தயவுசெய்து எங்கள் ஆப்பை மதிப்பிடுங்கள்.",
       "review_now_btn_text": "மதிப்பிடவும்",
       "exit_btn_text": "வெளியேறு",

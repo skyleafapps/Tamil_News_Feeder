@@ -18,6 +18,8 @@
  *         title: "Live title",
  *         channelName: "Polimer News",
  *         thumbnailUrl: "https://...",
+ *         actualStartTime: "2026-03-09T07:10:00Z",
+ *         publishedAt: "2026-03-09T07:00:00Z",
  *         fetchedAt: 1710000000000
  *       }
  *     ]
@@ -50,6 +52,7 @@ const FIRESTORE_COLLECTION = "all_streams";
 const FIRESTORE_DOC_ID = "main";
 
 const YOUTUBE_SEARCH_URL = "https://www.googleapis.com/youtube/v3/search";
+const YOUTUBE_VIDEOS_URL = "https://www.googleapis.com/youtube/v3/videos";
 
 // -----------------------------
 // VALIDATIONS
@@ -70,7 +73,6 @@ if (!fs.existsSync(CONFIG_PATH)) {
 // HELPERS
 // -----------------------------
 function parseFirebaseKey(input) {
-  // Try raw JSON first
   try {
     const parsed = JSON.parse(input);
     if (parsed.private_key) {
@@ -81,7 +83,6 @@ function parseFirebaseKey(input) {
     // continue
   }
 
-  // Try base64 JSON
   try {
     const decoded = Buffer.from(input, "base64").toString("utf8");
     const parsed = JSON.parse(decoded);
@@ -125,21 +126,11 @@ function readConfig() {
 }
 
 function getRunMode(now = new Date()) {
-  // Cron runs every 30 mins.
-  // We discover:
-  // - main channel every run
-  // - other channels only at top-of-hour runs
-  //
-  // Example:
-  // 10:00 -> main + others
-  // 10:30 -> main only
-  //
-  // This keeps:
-  // - main: every 30 mins
-  // - others: every 1 hour
-
+  // GitHub Actions can start late.
+  // Treat 00..19 as top-of-hour window.
   const minute = now.getUTCMinutes();
-  const isTopOfHourWindow = minute < 15; // safe window for cron around :00
+  const isTopOfHourWindow = minute < 25;
+
   return {
     isTopOfHourWindow,
     iso: now.toISOString(),
@@ -158,14 +149,6 @@ function pickBestThumbnail(thumbnails = {}) {
   );
 }
 
-function chunkArray(arr, size) {
-  const out = [];
-  for (let i = 0; i < arr.length; i += size) {
-    out.push(arr.slice(i, i + size));
-  }
-  return out;
-}
-
 function uniqueByVideoId(items) {
   const map = new Map();
   for (const item of items) {
@@ -173,6 +156,30 @@ function uniqueByVideoId(items) {
     map.set(item.videoId, item);
   }
   return Array.from(map.values());
+}
+
+function toTime(value) {
+  if (!value) return 0;
+  const ts = new Date(value).getTime();
+  return Number.isFinite(ts) ? ts : 0;
+}
+
+function compareLiveRecency(a, b) {
+  const aActual = toTime(a.actualStartTime);
+  const bActual = toTime(b.actualStartTime);
+
+  if (bActual !== aActual) {
+    return bActual - aActual;
+  }
+
+  const aPublished = toTime(a.publishedAt);
+  const bPublished = toTime(b.publishedAt);
+
+  if (bPublished !== aPublished) {
+    return bPublished - aPublished;
+  }
+
+  return (b.fetchedAt || 0) - (a.fetchedAt || 0);
 }
 
 // -----------------------------
@@ -196,50 +203,108 @@ function initFirebase() {
 // YOUTUBE DISCOVERY
 // -----------------------------
 async function fetchLiveStreamsForChannel(channel) {
-  const params = new URLSearchParams({
+  const searchParams = new URLSearchParams({
     part: "snippet",
     channelId: channel.youtubeChannelId,
     eventType: "live",
     type: "video",
+    order: "date",
     maxResults: "50",
     key: YT_API_KEY,
   });
 
-  const url = `${YOUTUBE_SEARCH_URL}?${params.toString()}`;
+  const searchUrl = `${YOUTUBE_SEARCH_URL}?${searchParams.toString()}`;
 
-  const response = await fetch(url, {
+  const searchResponse = await fetch(searchUrl, {
     method: "GET",
     headers: {
       Accept: "application/json",
     },
   });
 
-  if (!response.ok) {
-    const text = await response.text();
+  if (!searchResponse.ok) {
+    const text = await searchResponse.text();
     throw new Error(
-      `YouTube search failed for ${channel.title} | status=${response.status} | body=${text}`
+      `YouTube search failed for ${channel.title} | status=${searchResponse.status} | body=${text}`
     );
   }
 
-  const data = await response.json();
-  const items = Array.isArray(data.items) ? data.items : [];
+  const searchData = await searchResponse.json();
+  const searchItems = Array.isArray(searchData.items) ? searchData.items : [];
 
-  return items
+  const basicItems = searchItems
     .map((item) => {
       const videoId = item?.id?.videoId || "";
       const title = item?.snippet?.title || "";
       const thumbnailUrl = pickBestThumbnail(item?.snippet?.thumbnails);
+      const publishedAt = item?.snippet?.publishedAt || null;
 
       if (!videoId || !title) return null;
 
       return {
         videoId,
         title,
-        channelName: channel.title, // from config.json only
+        channelName: channel.title,
         thumbnailUrl,
+        publishedAt,
       };
     })
     .filter(Boolean);
+
+  if (basicItems.length === 0) {
+    return [];
+  }
+
+  const ids = basicItems.map((x) => x.videoId).join(",");
+  const videosParams = new URLSearchParams({
+    part: "snippet,liveStreamingDetails",
+    id: ids,
+    key: YT_API_KEY,
+  });
+
+  const videosUrl = `${YOUTUBE_VIDEOS_URL}?${videosParams.toString()}`;
+
+  const videosResponse = await fetch(videosUrl, {
+    method: "GET",
+    headers: {
+      Accept: "application/json",
+    },
+  });
+
+  if (!videosResponse.ok) {
+    const text = await videosResponse.text();
+    throw new Error(
+      `YouTube videos lookup failed for ${channel.title} | status=${videosResponse.status} | body=${text}`
+    );
+  }
+
+  const videosData = await videosResponse.json();
+  const videoItems = Array.isArray(videosData.items) ? videosData.items : [];
+
+  const detailsMap = new Map();
+
+  for (const item of videoItems) {
+    const id = item?.id || "";
+    if (!id) continue;
+
+    detailsMap.set(id, {
+      actualStartTime: item?.liveStreamingDetails?.actualStartTime || null,
+      publishedAt: item?.snippet?.publishedAt || null,
+    });
+  }
+
+  return basicItems.map((item) => {
+    const details = detailsMap.get(item.videoId) || {};
+
+    return {
+      videoId: item.videoId,
+      title: item.title,
+      channelName: item.channelName,
+      thumbnailUrl: item.thumbnailUrl,
+      actualStartTime: details.actualStartTime || null,
+      publishedAt: details.publishedAt || item.publishedAt || null,
+    };
+  });
 }
 
 // -----------------------------
@@ -270,9 +335,6 @@ async function loadCurrentDoc(db) {
 }
 
 function mergeLiveItems(existingItems, processedChannelNames, freshItems, nowTs) {
-  // Remove older entries for channels processed in this run.
-  // Then add freshly discovered live streams for those channels.
-  // Unprocessed channels remain untouched.
   const processedSet = new Set(processedChannelNames);
 
   const remainingOldItems = existingItems.filter(
@@ -284,12 +346,12 @@ function mergeLiveItems(existingItems, processedChannelNames, freshItems, nowTs)
     title: item.title,
     channelName: item.channelName,
     thumbnailUrl: item.thumbnailUrl,
+    actualStartTime: item.actualStartTime || null,
+    publishedAt: item.publishedAt || null,
     fetchedAt: nowTs,
   }));
 
   const merged = [...remainingOldItems, ...normalizedFresh];
-
-  // de-duplicate just in case
   return uniqueByVideoId(merged);
 }
 
@@ -309,7 +371,6 @@ async function run() {
     throw new Error("One channel must have main:true in config.json");
   }
 
-  // Decide which channels to process this run
   const channelsToProcess = [mainChannel];
 
   if (runMode.isTopOfHourWindow) {
@@ -327,7 +388,6 @@ async function run() {
   );
   console.log("==================================================");
 
-  // Discover live streams for selected channels
   const discoveredPerChannel = await Promise.all(
     channelsToProcess.map(async (channel) => {
       try {
@@ -345,41 +405,45 @@ async function run() {
         );
         return {
           channelName: channel.title,
-          items: null, // means keep existing items for this channel unchanged if failure
+          items: null,
           error: true,
         };
       }
     })
   );
 
-  // Load current Firestore doc
   const { ref, data } = await loadCurrentDoc(db);
-  let existingItems = data.items;
+  const existingItems = data.items;
 
-  // Important:
-  // If one channel's request fails, do not wipe its current streams.
-  // So we only process channels whose fetch succeeded.
   const successfulResults = discoveredPerChannel.filter((x) => Array.isArray(x.items));
   const processedChannelNames = successfulResults.map((x) => x.channelName);
   const freshItems = successfulResults.flatMap((x) => x.items);
 
-  const finalItems = mergeLiveItems(
+  let finalItems = mergeLiveItems(
     existingItems,
     processedChannelNames,
     freshItems,
     runMode.ts
   );
 
-  // Optional sort:
-  // 1) main channel first
-  // 2) then others
-  // 3) within same channel latest fetched first (same run anyway)
-  const mainChannelName = mainChannel.title;
-  finalItems.sort((a, b) => {
-    if (a.channelName === mainChannelName && b.channelName !== mainChannelName) return -1;
-    if (a.channelName !== mainChannelName && b.channelName === mainChannelName) return 1;
-    return (b.fetchedAt || 0) - (a.fetchedAt || 0);
-  });
+  if (runMode.isTopOfHourWindow) {
+    // Top-hour:
+    // sort everything globally by latest actualStartTime
+    finalItems.sort(compareLiveRecency);
+  } else {
+    // Main-only run:
+    // sort only main channel items by latest actualStartTime
+    // keep other channel items unchanged after that
+    const mainItems = finalItems
+      .filter((item) => item.channelName === mainChannel.title)
+      .sort(compareLiveRecency);
+
+    const otherItems = finalItems.filter(
+      (item) => item.channelName !== mainChannel.title
+    );
+
+    finalItems = [...mainItems, ...otherItems];
+  }
 
   await ref.set(
     {
@@ -389,7 +453,9 @@ async function run() {
     { merge: true }
   );
 
-  console.log(`[ALL_STREAMS] Firestore updated: ${FIRESTORE_COLLECTION}/${FIRESTORE_DOC_ID}`);
+  console.log(
+    `[ALL_STREAMS] Firestore updated: ${FIRESTORE_COLLECTION}/${FIRESTORE_DOC_ID}`
+  );
   console.log(`[ALL_STREAMS] Total live items : ${finalItems.length}`);
   console.log("[ALL_STREAMS] Done");
 }
