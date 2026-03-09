@@ -1,0 +1,28 @@
+name: Update Live Streams
+
+on:
+  schedule:
+    - cron: "*/30 * * * *"   # every 30 minutes
+  workflow_dispatch:         # allows manual run from GitHub
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Run Stream Updater
+        run: node update_all_streams.js
+        env:
+          YT_API_KEY_FOR_ALL_STREAMS: ${{ secrets.YT_API_KEY_FOR_ALL_STREAMS }}
+          FIREBASE_KEY: ${{ secrets.FIREBASE_KEY }}

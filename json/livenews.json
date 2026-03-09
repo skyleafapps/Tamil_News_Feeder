@@ -1,6 +1,6 @@
 [
   {
-    "id":"6xCrWQEcJZM",
+    "url":"https://live-cf-polimernews.dailyhunt.in/master.m3u8",
     "image": "https://storage.googleapis.com/madzjson/TamilNews/images/livetv/polimer_tv.png",
     "title": "Polimer News"
   },
@@ -10,7 +10,7 @@
     "title": "Puthiya Thalamurai"
   },
   {
-    "id": "8kjza8MzPXE",
+    "url": "https://cdn-3.pishow.tv/live/1612/master.m3u8",
     
     "image": "https://storage.googleapis.com/madzjson/TamilNews/images/livetv/thanthi_tv.png",
     "title": "Thanthi TV"

@@ -31,6 +31,60 @@
 			"streamUrl": "https://yuppmedtaorire.akamaized.net/v1/manifest/a0d007312bfd99c47f76b77ae26b1ccdaae76cb1/puthiya_nim_https/556423dc-14c7-4116-8437-7c656b2504ad/2.m3u8",
 			"name": "Puthiya Thalaimurai"
 		},
+		 {
+       
+        "name": "Kodai FM 100.5",
+        "logo": "https://hdfmradio.com/wp-content/uploads/Kodai-fm-100.5-.png",
+        "streamUrl": "https://air.pc.cdn.bitgravity.com/air/live/pbaudio051/master.m3u8"
+    },
+	 {
+        
+        "name": "Air Madurai",
+        "logo": "https://radiobarfi.com/wp-content/uploads/2023/06/All-India-Radio-Madurai.webp",
+        "streamUrl": "https://air.pc.cdn.bitgravity.com/air/live/pbaudio126/playlist.m3u8"
+    },
+	 {
+    
+        "name": "AIR Ooty",
+        "logo": "https://radiobarfi.com/wp-content/uploads/2022/02/All-India-Radio-Ooty.webp",
+        "streamUrl": "https://air.pc.cdn.bitgravity.com/air/live/pbaudio207/playlist.m3u8"
+    },
+    {
+  
+        "name": "AIR Tiruchirappalli FM",
+        "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFyo-R8yaFbbps_OyBVJfkSb-KGJp1GMWuBQ&s",
+        "streamUrl": "https://air.pc.cdn.bitgravity.com/air/live/pbaudio040/playlist.m3u8"
+    },
+	  {
+       
+        "name": "Air Tuticorin",
+        "logo": "https://radiobarfi.com/wp-content/uploads/2022/02/all-india-radio-tuticorin-online.webp",
+        "streamUrl": "https://air.pc.cdn.bitgravity.com/air/live/pbaudio121/playlist.m3u8"
+    },
+    {
+
+        "name": "Air Karaikal",
+        "logo": "https://tamilradios.net/webpimg/radio_98204_Karaikal.webp",
+        "streamUrl": "https://air.pc.cdn.bitgravity.com/air/live/pbaudio050/playlist.m3u8"
+    },
+    {
+   
+        "name": "Air Puducherry PC",
+        "logo": "https://radiobarfi.com/wp-content/uploads/2022/02/All-India-Radio-Puducherry-PC.webp",
+        "streamUrl": "http://air.pc.cdn.bitgravity.com/air/live/pbaudio097/playlist.m3u8"
+    },
+    {
+      
+        "name": "AIR Live News 24x7",
+        "logo": "https://static.mytuner.mobi/media/tvos_radios/c8rkdnnkrs7e.jpg",
+        "streamUrl": "https://airhlspush.pc.cdn.bitgravity.com/httppush/hlspbaudio002/hlspbaudio002_Auto.m3u8"
+    },
+    {
+       
+        "name": "Air Raagam",
+        "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVQW-s6wguTjiirfvuyfVKHt2bRP3D7cZ94w&s",
+        "streamUrl": "https://airhlspush.pc.cdn.bitgravity.com/httppush/hlspbaudioragam/hlspbaudioragam_Auto.m3u8"
+    },
 		{
 			"logo": "https://storage.googleapis.com/madzjson/TamilNews/images/livetv/news7_tamil_tv.png",
 			"streamUrl": "https://yuppmedtaorire.akamaized.net/v1/master/a0d007312bfd99c47f76b77ae26b1ccdaae76cb1/news7_nim_https/240122/news7/playlist.m3u8",
