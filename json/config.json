@@ -5,14 +5,15 @@
       "playStoreUrl": "https://play.google.com/store/apps/details?id=com.tamil.livenews.fmradio",
       "showDialog": false,
 
-        "forceUpdateEnabled": true,   
+        "forceUpdateEnabled": false,   
         "latestVersion": "1.2",            
         "forceUpdateText": "ஆப்பைப் பயன்படுத்த, தயவுசெய்து புதுப்பிக்கவும்."
     },
 
     "main": {
+        "showHomeScreen":true,
       "show_review_modal": true,
-      "review_cooldown_days":2,
+      "review_cooldown_days":1,
       "review_message": "உங்களுக்கு மேலும் நல்ல சேவை வழங்க, தயவுசெய்து எங்கள் ஆப்பை மதிப்பிடுங்கள்.",
       "review_now_btn_text": "மதிப்பிடவும்",
       "exit_btn_text": "வெளியேறு",
@@ -20,9 +21,9 @@
       "youtubeiframe":true,
 
   "notice_enabled": false,
-  "notice_url": "com.tamil.livenews.fmradio",
-  "notice_mode": "PLAYSTORE",
-  "notice_image_url": "https://littlevillagemag.com/wp-content/uploads/2025/06/f1-the-movie-1080x1600-1.jpg",
+  "notice_url": "mailto:quickleafapps@gmail.com?subject=Ad%20Promotion%20Enquiry&body=Hello",
+  "notice_mode": "MAILTO",
+  "notice_image_url": "https://www.shutterstock.com/shutterstock/photos/2358091059/display_1500/stock-vector-super-sale-banner-template-design-big-deal-flash-sale-discount-template-promotion-posts-web-2358091059.jpg",
   "notice_force": false,
 
       "contactContent": "contact us Truemediaapps@gmail.com",
@@ -34,11 +35,21 @@
     "livenews_ad_first_click": 3,
     "livenews_ad_frequency": 5,
 
-    "newspaper_ad_enabled": false,
+    "newspaper_ad_enabled": true,
     "newspaper_ad_first_click": 3,
     "newspaper_ad_frequency": 5,
 
      "player_banner_enabled":false,
+
+      "showAppOpenAd": false,
+      
+
+
+      "breaking_mrec_enabled": true,
+  "breaking_mrec_interval": 8,
+
+  "newspaper_banner_enabled": true,
+  "banner_adaptive_enabled": false,
 
 
       "showAllStreamsBanner": true,
@@ -47,10 +58,11 @@
   "showMarketPricesBanner": true,
   "allStreamsInterstitial_first_click": 3,
   "allStreamsInterstitial_frequency": 0,
+  "appOpenAndroid": "ca-app-pub-2099217985955903/7463881686",
   "allStreamsBannerAndroid": "ca-app-pub-2099217985955903/2325347487",
   "allStreamsPlayerBannerAndroid": "ca-app-pub-2099217985955903/3115684970",
   "allStreamsInterstitialAndroid": "ca-app-pub-2099217985955903/3231235047",
-  "marketPricesBannerAndroid": "ca-app-pub-2099217985955903/4045623267",
+  "marketPricesBannerAndroid": "ca-app-pub-2099217985955903/4164320954",
   
     "bannerAndroid": "ca-app-pub-2099217985955903/5051992954",
   "mediumRectangleAndroid": "ca-app-pub-2099217985955903/8005459353",
