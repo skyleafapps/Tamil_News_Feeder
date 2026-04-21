@@ -15,6 +15,13 @@
     "image": "https://storage.googleapis.com/madzjson/TamilNews/images/livetv/thanthi_tv.png",
     "title": "Thanthi TV"
   },
+  
+   {
+    "url": "https://yuppnimresmum.akamaized.net/240122/news7/playlist.m3u8?hdnts=st=1776737836~exp=1776741436~acl=!*/240122/news7/*!yuppTVCom_5_-1_72bdd9a555b24c41_IN_223.185.134.65/payload/yuppTVCom_5_-1_72bdd9a555b24c41_IN_223.185.134.65/*~hmac=6788b0339131d39bf68f45bb7581fb5106930bb94fcdcba4e685c5c58afc5643&ads.app_bundle=&ads.app_store_url=&ads.content_livestream=1&ads.language=TAM&ads.content_genre=NEWS&ads.channel=2248&ads.channel_name=News7Tamil&ads.network_name=yupptv&ads.user=0",
+    "image": "https://play-lh.googleusercontent.com/QvmaJVAmugdmWzARi3yFy90grj1EzCXeAp2u9LtA7HgeQwJLsGapSmZW31x5WLtEyJg5XmCLaE_ucYJS4pmshQ",
+    "title": "News7 Tamil"
+  },
+
   {
     "url": "https://cdn-3.pishow.tv/live/1279/master.m3u8",
     "image": "https://storage.googleapis.com/madzjson/TamilNews/images/livetv/newsj.png",
@@ -25,10 +32,27 @@
     "title": "Z Tamil News",
     "url": "https://dpkvdnzbeen1l.cloudfront.net/index_4.m3u8"
   },
+  
+  {
+    "url": "https://yuppnimresmum.akamaized.net/120723/smil:seithagal.smil/playlist.m3u8?ads.content_custom_3_param=YuppFastIndia&hdnts=st=1776739459~exp=1776761059~acl=!*/120723/smil:seithagal.smil/*!/payload/yupptvott_5_848803_31e0dba385394398_IN_223.185.134.65_yuppfast_2_channel_119_-1/*~data=yupptvott_5_848803_31e0dba385394398_IN_223.185.134.65_yuppfast_2_channel_119_-1~hmac=894b5576cc2e34e7a5a5033a96d7370e06d80316a19b3de066cc9e4599b75012&ads.network_name=yuppfast&ads.app_store_url=&ads.app_bundle=&ads.content_livestream=1&ads.content_genre=NEWS&ads.channel_name=SeithigalTV&ads.language=TAM&ads.user=0",
+    "image": "https://media.assettype.com/kalaignarseithigal%2F2019-04%2F273604e9-3c45-44a4-9866-9584c01fddbd%2FNEWS_01.png?w=1200&auto=format%2Ccompress&ogImage=true",
+    "title": "Kalaignar TV News"
+  },
   {
     "image": "https://yt3.googleusercontent.com/ytc/AIdro_kBglfTd4tBzq1GqPKt8HyVm0pk9p8D-XRlsbPIrduc_A=s900-c-k-c0x00ffffff-no-rj",
     "title": "Makkal TV",
     "url": "https://5k8q87azdy4v-hls-live.wmncdn.net/MAKKAL/271ddf829afeece44d8732757fba1a66.sdp/chunks.m3u8"
+  },
+  {
+    "image": "https://jiotvimages.cdn.jio.com/dare_images/images/channel/ed00e083788380a3523e2ef1d7f33fe8.png",
+    "title": "Jaya plus",
+    "id": "KQNnraEj5eo"
+  },
+
+  {
+    "image": "https://yt3.googleusercontent.com/pNsJVrKDGR9dR7HxY0Dmxra4ey8o-5R4vgG6uCMGmCZqh7r0hTFjxcNh0BybaVE7GBd7Wud-=s900-c-k-c0x00ffffff-no-rj",
+    "title": "Tamil Janam TV",
+    "url": "https://yuppmedtaorire.akamaized.net/v1/master/a0d007312bfd99c47f76b77ae26b1ccdaae76cb1/janamtv_nim_https/140622/janamtv/playlist.m3u8"
   },
   {
     "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSk_VtmCtnfB3W4qBo-BoigiMcEevtaXUylvg&s",
@@ -36,12 +60,17 @@
     "url": "https://d2lk5u59tns74c.cloudfront.net/out/v1/abf46b14847e45499f4a47f3a9afe93d/index.m3u8"
   },
   {
+    "image": "https://d229kpbsb5jevy.cloudfront.net/tv/150/150/bnw/Madha_TV-black.png",
+    "title": "Madha TV",
+    "url": "http://103.109.45.5:1935/madhatv/madhatv.stream_HDp/chunklist_w67072347.m3u8"
+  },
+  {
     "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRB7ev0iL2s4XvoY22PmHJP5zGNc5i2cBlTRA&s",
     "title": "Velicham Tv",
     "url": "https://cdn.smartstream.video/smartstream-us/velichamtv/velichamtv/chunks.m3u8"
   },
   {
-    "url": "https://yuppnimresmum.akamaized.net/120723/smil:seithagal.smil/playlist.m3u8?ads.content_custom_3_param=YuppFastIndia&hdnts=st=1776568000~exp=1776589600~acl=!*/120723/smil:seithagal.smil/*!/payload/yupptvott_5_848803_31e0dba385394398_IN_223.185.134.175_yuppfast_2_channel_119_-1/*~data=yupptvott_5_848803_31e0dba385394398_IN_223.185.134.175_yuppfast_2_channel_119_-1~hmac=d36945d2281205149cd58e5985ab098b3073fda1dca283a6872999d72d4cfeb4&ads.network_name=yuppfast&ads.app_store_url=&ads.app_bundle=&ads.content_livestream=1&ads.content_genre=NEWS&ads.channel_name=SeithigalTV&ads.language=TAM&ads.user=0",
+    "url": "https://yuppnimresmum.akamaized.net/120723/smil:seithagal.smil/playlist.m3u8?ads.content_custom_3_param=YuppFastIndia&hdnts=st=1776739459~exp=1776761059~acl=!*/120723/smil:seithagal.smil/*!/payload/yupptvott_5_848803_31e0dba385394398_IN_223.185.134.65_yuppfast_2_channel_119_-1/*~data=yupptvott_5_848803_31e0dba385394398_IN_223.185.134.65_yuppfast_2_channel_119_-1~hmac=894b5576cc2e34e7a5a5033a96d7370e06d80316a19b3de066cc9e4599b75012&ads.network_name=yuppfast&ads.app_store_url=&ads.app_bundle=&ads.content_livestream=1&ads.content_genre=NEWS&ads.channel_name=SeithigalTV&ads.language=TAM&ads.user=0",
     "image": "https://media.assettype.com/kalaignarseithigal%2F2019-04%2F273604e9-3c45-44a4-9866-9584c01fddbd%2FNEWS_01.png?w=1200&auto=format%2Ccompress&ogImage=true",
     "title": "Kalaignar TV News"
   },
@@ -59,5 +88,17 @@
     "id": "hXeY_qDbXBY",
     "image": "https://static.wikia.nocookie.net/logopedia/images/d/d1/Malai_Murasu.png/revision/latest?cb=20191229035538",
     "title": "Maalai Murasu"
+  }
+  ,
+  {
+    "url": "https://d1msejlow1t3l4.cloudfront.net/fta/peppers/playlist.m3u8?hdnts=st=1776738936~exp=1776742536~acl=!*/fta/peppers/*!yuppTVCom_5_-1_72bdd9a555b24c41_IN_223.185.134.65/payload/yuppTVCom_5_-1_72bdd9a555b24c41_IN_223.185.134.65/*~hmac=1b193e74857c77441d8a16f7ddf01aecc3dbbbff86710a072ff462c11b2057de&ads.app_bundle=&ads.app_store_url=&ads.content_livestream=1&ads.language=TAM&ads.content_genre=ENT&ads.channel=6644&ads.channel_name=PeppersTV&ads.network_name=yupptv&ads.user=0",
+    "image": "https://content.jdmagicbox.com/v2/comp/chennai/y8/044pxx44.xx44.111214172147.r1y8/catalogue/peppers-media-pvt-ltd-nandanam-chennai-satellite-channels-17y2oxidc6.jpg",
+    "title": "Peppers TV"
+  }
+  ,
+  {
+    "url": "https://cdn.zionmediait.com/zionmediaitserver2024/97484f5ce6da96e496a9b87c439835d0.sdp/playlist.m3u8",
+    "image": "https://tamilantelevision.com/wp-content/uploads/2024/03/310486131_403071722030750_7947476326398319759_n.jpg",
+    "title": "Tamilan TV"
   }
 ]
